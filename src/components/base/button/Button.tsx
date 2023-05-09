@@ -35,7 +35,7 @@ const Button = ({
   return (
     <button
       className={cn(
-        'box-border rounded-full',
+        'box-border rounded-md',
         SIZES_STYLES[size],
         VARIANT_STYLES[variant],
         className,
