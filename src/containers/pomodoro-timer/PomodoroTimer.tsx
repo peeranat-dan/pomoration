@@ -31,16 +31,16 @@ const PomodoroTimer = ({ variant }: PomodoroTimerProps) => {
     <div className='space-y-2'>
       <div
         className={cn(
-          'mx-auto flex items-center justify-center gap-4 rounded-lg border-2 border-gray-200 bg-white px-4 py-8 dark:border-gray-400 dark:bg-bg-dark md:gap-2',
+          'mx-auto flex items-center justify-center gap-4 rounded-lg border-2 border-gray-200 bg-bg-light px-4 py-8 dark:border-gray-400 dark:bg-bg-dark md:gap-2',
           VARIANTS_STYLE[variant],
         )}
       >
-        <div className='grid w-1/2 place-items-center gap-2 text-center'>
+        <div className='grid place-items-center gap-2 text-center'>
           <div>
             <Timer time={1200} />
             <div className='text-lg'>{VARIANTS_TITLE[variant]}</div>
           </div>
-          <Button className='w-1/2'>Start</Button>
+          <Button className='w-full md:w-1/2'>Start</Button>
         </div>
       </div>
     </div>
