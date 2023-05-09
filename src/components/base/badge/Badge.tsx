@@ -1,4 +1,4 @@
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/utils/classnames';
 
 const ROUNDED_STYLES = {
   pill: 'rounded-[999px]',
@@ -30,7 +30,7 @@ const Badge = ({
 }: BadgeProps) => {
   return (
     <div
-      className={twMerge(
+      className={cn(
         'w-fit select-none px-2 py-1 text-sm font-semibold',
         ROUNDED_STYLES[rounded],
         COLOR_STYLES[color],

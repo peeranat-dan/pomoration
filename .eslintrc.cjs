@@ -56,6 +56,8 @@ module.exports = {
         },
       },
     ],
+    'func-style': ['error', 'expression'],
+    'prefer-arrow-callback': ['error', { allowNamedFunctions: false }],
   },
   settings: {
     react: {

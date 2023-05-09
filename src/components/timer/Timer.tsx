@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 
-import { twMerge } from 'tailwind-merge';
-
+import { cn } from '@/utils/classnames';
 import { toMMSS } from '@/utils/formatTime';
 
 export interface TimerProps {
@@ -19,7 +18,7 @@ const Timer = ({ time, onTimeEnd, textStyle }: TimerProps) => {
   }, []);
 
   return (
-    <div className={twMerge('select-none font-mono text-5xl font-semibold', textStyle)}>
+    <div className={cn('select-none font-mono text-6xl font-semibold', textStyle)}>
       {toMMSS(time)}
     </div>
   );

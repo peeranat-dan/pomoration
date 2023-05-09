@@ -1,7 +1,7 @@
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
-import { twMerge } from 'tailwind-merge';
 
 import { useThemeContext } from '@/providers/ThemeProvider';
+import { cn } from '@/utils/classnames';
 
 const ThemeToggle = () => {
   const { theme, setTheme } = useThemeContext();
@@ -11,7 +11,7 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      className={twMerge(
+      className={cn(
         'rounded-full p-2 duration-200 hover:bg-gray-100  hover:text-primary-500',
         isDark ? 'text-white' : 'text-black',
       )}
