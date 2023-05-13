@@ -16,10 +16,10 @@ const VARIANT_STYLES = {
   text: 'bg-transparent text-primary hover:underline hover:text-primary-600 duration-200 disabled:text-gray-400 disabled:hover:bg-transparent disabled:hover:text-gray-400 dark:text-primary-200 dark:hover:text-primary-300 dark:hover:bg-transparent',
 };
 
-export type ButtonSize = keyof typeof SIZES_STYLES;
-export type ButtonVariant = keyof typeof VARIANT_STYLES;
+type ButtonSize = keyof typeof SIZES_STYLES;
+type ButtonVariant = keyof typeof VARIANT_STYLES;
 
-export interface ButtonProps extends React.ComponentProps<'button'> {
+interface ButtonProps extends React.ComponentProps<'button'> {
   children: React.ReactNode;
   size?: ButtonSize;
   variant?: ButtonVariant;
@@ -48,3 +48,4 @@ const Button = ({
 };
 
 export default Button;
+export type { ButtonProps, ButtonSize, ButtonVariant };

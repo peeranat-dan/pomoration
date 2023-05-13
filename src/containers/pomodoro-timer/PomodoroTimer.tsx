@@ -1,47 +1,45 @@
 import { Button } from '@/components/base';
 import Timer from '@/components/timer';
+import type { PomodoroMode } from '@/types/pomodoro';
 import { cn } from '@/utils/classnames';
+import { usePomodoroTimer } from '@/utils/usePomodoroTimer';
 
-type PomodoroTimerVariant = 'break' | 'focus' | 'longBreak';
-
-type PomodoroTimerProps = {
-  variant: PomodoroTimerVariant;
-};
-
-const VARIANTS_STYLE = {
-  break: 'bg-blue-050 text-blue-800',
-  focus: 'text-primary-800 dark:text-primary-200',
+const VARIANTS_STYLE: Record<PomodoroMode, string> = {
+  shortBreak: 'bg-blue-050 text-blue-800',
+  focus: 'text-primary dark:text-primary-200',
   longBreak: 'bg-green-050 text-green-800',
-};
+} as const;
 
-// const VARIANTS_TIME = {
-//   break: 300,
-//   focus: 1200,
-//   longBreak: 900,
-// };
-
-const VARIANTS_TITLE = {
-  break: 'Break',
+const VARIANTS_TITLE: Record<PomodoroMode, string> = {
+  shortBreak: 'Break',
   focus: 'Focus',
   longBreak: 'Long Break',
-};
+} as const;
 
-const PomodoroTimer = ({ variant }: PomodoroTimerProps) => {
+const PomodoroTimer = () => {
+  const { timeLeft, isRunning, mode, pomodoroCount, startTimer, pauseTimer } = usePomodoroTimer();
   return (
-    <div className='space-y-2'>
-      <div
-        className={cn(
-          'mx-auto flex items-center justify-center gap-4 rounded-lg border-2 border-gray-200 bg-bg-light px-4 py-8 dark:border-gray-400 dark:bg-bg-dark md:gap-2',
-          VARIANTS_STYLE[variant],
-        )}
-      >
-        <div className='grid place-items-center gap-2 text-center'>
-          <div>
-            <Timer time={1200} />
-            <div className='text-lg'>{VARIANTS_TITLE[variant]}</div>
-          </div>
-          <Button className='w-full md:w-1/2'>Start</Button>
+    <div
+      className={cn(
+        'mx-auto flex items-center justify-center gap-4 rounded-lg border-2 border-gray-200 bg-bg-light px-4 py-8 dark:border-gray-400 dark:bg-bg-dark md:gap-2',
+        VARIANTS_STYLE[mode],
+      )}
+    >
+      <div className='space-y-4 text-center'>
+        <div>
+          <Timer time={timeLeft} />
+          <div className='text-lg'>{VARIANTS_TITLE[mode]}</div>
+          <div className='text-base'>{pomodoroCount}</div>
         </div>
+        {isRunning ? (
+          <Button className='w-full' onClick={pauseTimer}>
+            Pause
+          </Button>
+        ) : (
+          <Button className='w-full' onClick={startTimer}>
+            Start
+          </Button>
+        )}
       </div>
     </div>
   );

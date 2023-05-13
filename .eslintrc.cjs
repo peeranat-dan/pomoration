@@ -58,6 +58,7 @@ module.exports = {
     ],
     'func-style': ['error', 'expression'],
     'prefer-arrow-callback': ['error', { allowNamedFunctions: false }],
+    '@typescript-eslint/consistent-type-imports': 'error',
   },
   settings: {
     react: {
