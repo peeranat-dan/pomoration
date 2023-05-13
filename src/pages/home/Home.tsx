@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <BaseLayout>
       <div className='mx-auto max-w-xl px-4 sm:px-0'>
-        <PomodoroTimer variant='focus' />
+        <PomodoroTimer />
       </div>
     </BaseLayout>
   );

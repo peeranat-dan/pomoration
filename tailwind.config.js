@@ -4,7 +4,7 @@ export default {
   darkMode: 'class',
   theme: {
     fontFamily: {
-      sans: ['Rubik', 'sans-serif'],
+      sans: ['Anuphan', 'sans-serif'],
       mono: ['Azeret Mono', 'monospace'],
     },
     extend: {

@@ -19,7 +19,7 @@ const VARIANT_STYLES = {
 type ButtonSize = keyof typeof SIZES_STYLES;
 type ButtonVariant = keyof typeof VARIANT_STYLES;
 
-interface ButtonProps extends React.ComponentProps<'button'> {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   size?: ButtonSize;
   variant?: ButtonVariant;
@@ -30,6 +30,7 @@ const Button = ({
   className,
   size = 'md',
   variant = 'primary',
+  type = 'button',
   ...props
 }: ButtonProps) => {
   return (
@@ -41,6 +42,7 @@ const Button = ({
         className,
       )}
       {...props}
+      type={type}
     >
       {children}
     </button>

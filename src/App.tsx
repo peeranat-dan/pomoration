@@ -1,25 +1,17 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-
+import AuthProvider from './providers/auth/AuthProvider';
+import QueryProvider from './providers/QueryProvider';
 import ThemeProvider from './providers/ThemeProvider';
 import AppRouter from './router';
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: 0,
-    },
-  },
-});
-
 const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
+    <QueryProvider>
       <ThemeProvider>
-        <AppRouter />
-        <ReactQueryDevtools initialIsOpen={false} />
+        <AuthProvider>
+          <AppRouter />
+        </AuthProvider>
       </ThemeProvider>
-    </QueryClientProvider>
+    </QueryProvider>
   );
 };
 
