@@ -18,7 +18,7 @@ const Timer = ({ time, onTimeEnd, textStyle }: TimerProps) => {
   }, []);
 
   return (
-    <div className={cn('select-none font-mono text-6xl font-semibold', textStyle)}>
+    <div className={cn('select-none font-mono text-6xl font-semibold md:text-8xl', textStyle)}>
       {toMMSS(time)}
     </div>
   );

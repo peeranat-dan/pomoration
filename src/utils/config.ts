@@ -5,6 +5,7 @@ const envSchema = z.object({
     url: z.string().default(''),
     anonKey: z.string().default(''),
   }),
+  appName: z.string().default('Pomoration'),
 });
 
 export type Env = z.infer<typeof envSchema>;
@@ -14,4 +15,5 @@ export const env = envSchema.parse({
     url: import.meta.env.VITE_SUPABASE_URL,
     anonKey: import.meta.env.VITE_SUPABASE_ANON_KEY,
   },
+  appName: import.meta.env.VITE_APP_NAME,
 });

@@ -1,7 +1,11 @@
+import { useEffect } from 'react';
+
 import { Button } from '@/components/base';
 import Timer from '@/components/timer';
 import type { PomodoroMode } from '@/types/pomodoro';
 import { cn } from '@/utils/classnames';
+import { env } from '@/utils/config';
+import { toMMSS } from '@/utils/formatTime';
 import { usePomodoroTimer } from '@/utils/usePomodoroTimer';
 
 const VARIANTS_STYLE: Record<PomodoroMode, string> = {
@@ -18,10 +22,13 @@ const VARIANTS_TITLE: Record<PomodoroMode, string> = {
 
 const PomodoroTimer = () => {
   const { timeLeft, isRunning, mode, startTimer, pauseTimer } = usePomodoroTimer();
+  useEffect(() => {
+    document.title = `${toMMSS(timeLeft)} - ${VARIANTS_TITLE[mode]} | ${env.appName}`;
+  }, [timeLeft, mode]);
   return (
     <div
       className={cn(
-        'mx-auto flex items-center justify-center gap-4 rounded-lg border-2 border-gray-200 bg-bg-light px-4 py-8 dark:border-gray-400 dark:bg-bg-dark md:gap-2',
+        'mx-auto flex items-center justify-center gap-4 rounded-lg py-4 md:gap-2',
         VARIANTS_STYLE[mode],
       )}
     >
