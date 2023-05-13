@@ -17,7 +17,7 @@ const VARIANTS_TITLE: Record<PomodoroMode, string> = {
 } as const;
 
 const PomodoroTimer = () => {
-  const { timeLeft, isRunning, mode, pomodoroCount, startTimer, pauseTimer } = usePomodoroTimer();
+  const { timeLeft, isRunning, mode, startTimer, pauseTimer } = usePomodoroTimer();
   return (
     <div
       className={cn(
@@ -29,7 +29,6 @@ const PomodoroTimer = () => {
         <div>
           <Timer time={timeLeft} />
           <div className='text-lg'>{VARIANTS_TITLE[mode]}</div>
-          <div className='text-base'>{pomodoroCount}</div>
         </div>
         {isRunning ? (
           <Button className='w-full' onClick={pauseTimer}>
