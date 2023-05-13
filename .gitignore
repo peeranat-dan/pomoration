@@ -31,3 +31,5 @@ storybook-static
 .env.*
 !.env.development
 
+# turbo
+.turbo
