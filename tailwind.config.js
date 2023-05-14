@@ -1,10 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+
+import { fontFamily } from 'tailwindcss/defaultTheme';
+
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class',
   theme: {
     fontFamily: {
-      sans: ['Anuphan', 'sans-serif'],
+      sans: ['Anuphan', 'sans-serif', ...fontFamily.sans],
       mono: ['Azeret Mono', 'monospace'],
     },
     extend: {
@@ -13,6 +16,10 @@ export default {
         'bg-light': '#fff',
         // Dark
         'bg-dark': '#2c2c2c',
+        // Card
+        card: {
+          description: '#64748b',
+        },
         // Primary
         primary: {
           '050': '#EAE2F8',
