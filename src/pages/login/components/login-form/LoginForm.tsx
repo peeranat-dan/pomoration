@@ -36,9 +36,8 @@ const LoginForm = () => {
             type='email'
             id='email'
             placeholder='Email'
-            name='email'
             label='Email'
-            register={register}
+            {...register('email')}
             error={errors.email?.message}
           />
           <Form.Input
@@ -46,8 +45,7 @@ const LoginForm = () => {
             type='password'
             id='password'
             placeholder='Password'
-            name='password'
-            register={register}
+            {...register('password')}
             error={errors.password?.message}
           />
           <Button type='submit'>Login</Button>
