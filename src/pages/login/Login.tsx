@@ -8,9 +8,9 @@ const Login = () => {
   const navigate = useNavigate();
   return (
     <CenteredLayout>
-      <div className='mx-auto w-1/3 max-w-md space-y-4 px-4 sm:px-0'>
+      <div className='mx-auto w-full max-w-md space-y-4 px-4 sm:px-0 md:w-1/3'>
         <div
-          className='cursor-default select-none text-center text-3xl font-bold  text-primary-500'
+          className='cursor-pointer select-none text-center text-4xl font-bold text-primary-500'
           onClick={() => navigate('/')}
         >
           POMORATION
