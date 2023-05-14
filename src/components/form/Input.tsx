@@ -17,7 +17,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         </label>
         <input
           className={cn(
-            'w-full rounded-md border px-3 py-2 outline-none focus:border-transparent focus:ring-2 focus:ring-primary-500',
+            'w-full rounded-md border px-3 py-2 outline-none focus:border-transparent focus:ring-2 focus:ring-primary-500 dark:bg-slate-200',
             error ? 'border-red-500' : 'border-neutral-300',
             className,
           )}
