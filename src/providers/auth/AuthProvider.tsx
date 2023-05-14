@@ -6,7 +6,7 @@ import { auth, loginWithEmailAndPassword } from '@/api/auth';
 import LoadingSpinner from '@/components/loading-spinner';
 
 import { AUTH_ERROR_MESSAGES } from './constants';
-import type { AuthContextProps } from './types';
+import type { AuthContextProps, UserData } from './types';
 import { AUTH_STATE } from './types';
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -15,15 +15,27 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [authState, setAuthState] = useState<AUTH_STATE>(AUTH_STATE.INITIALIZING);
   const [loading, setLoading] = useState<boolean>(true);
   const [authError, setAuthError] = useState<string | null>(null);
+  const [user, setUser] = useState<UserData | null>(null);
 
   useEffect(() => {
     const { data } = auth.onAuthStateChange((_, session) => {
       if (!session) {
         setAuthState(AUTH_STATE.NOT_LOGGED_IN);
+        setUser(null);
         setLoading(false);
       } else {
-        setAuthState(AUTH_STATE.LOGGED_IN);
-        setLoading(false);
+        if (session.user.email) {
+          setAuthState(AUTH_STATE.LOGGED_IN);
+          setUser({
+            id: session.user.id,
+            email: session.user.email,
+          });
+          setLoading(false);
+        } else {
+          setAuthState(AUTH_STATE.NOT_LOGGED_IN);
+          setUser(null);
+          setLoading(false);
+        }
       }
     });
 
@@ -82,6 +94,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         login,
         logout,
         isLoggedIn,
+        user,
       }}
     >
       {children}
