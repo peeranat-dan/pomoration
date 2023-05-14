@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 
 import { Menu, Transition } from '@headlessui/react';
 
+import { useAuthContext } from '@/providers/auth/AuthProvider';
 import { cn } from '@/utils/classnames';
 
 const MenuItem = ({
@@ -17,8 +18,8 @@ const MenuItem = ({
         {({ active }) => (
           <button
             className={cn([
-              active ? 'bg-primary-100 text-primary-600' : 'text-gray-900',
-              'group flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm',
+              active ? 'bg-primary-100 text-primary-600 dark:bg-primary-300' : 'text-gray-900',
+              'group flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm font-medium',
             ])}
             onClick={onClick}
           >
@@ -37,6 +38,12 @@ const UserAvatarMenu = ({
   children: React.ReactNode;
   logout: () => Promise<void>;
 }) => {
+  const { user } = useAuthContext();
+
+  if (!user) {
+    return null;
+  }
+
   return (
     <div className='relative'>
       <Menu as='div'>
@@ -50,12 +57,14 @@ const UserAvatarMenu = ({
           leaveFrom='transform opacity-100 scale-100'
           leaveTo='transform opacity-0 scale-95'
         >
-          <Menu.Items className='absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+          <Menu.Items className='absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:divide-gray-500 dark:bg-bg-dark'>
             <div className='select-none p-2'>
-              <h5>Guest</h5>
-              <div className='text-sm text-gray-400'>ppeeranat.d@gmail.com</div>
+              <h5 className='text-2xl'>Guest</h5>
+              <div className='text-sm text-gray-500 dark:text-gray-400'>{user.email}</div>
             </div>
-            <MenuItem onClick={logout}>Logout</MenuItem>
+            <MenuItem onClick={logout}>
+              <p>Logout</p>
+            </MenuItem>
           </Menu.Items>
         </Transition>
       </Menu>
