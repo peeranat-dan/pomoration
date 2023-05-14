@@ -9,6 +9,7 @@ export type AuthContextProps = {
   authState: AUTH_STATE;
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
+  logout: () => Promise<void>;
   authError: string | null;
   isLoggedIn: boolean;
 };

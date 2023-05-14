@@ -47,6 +47,22 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
+  const logout = async () => {
+    try {
+      const { error } = await auth.signOut();
+      setAuthState(AUTH_STATE.NOT_LOGGED_IN);
+      if (error) {
+        throw error;
+      }
+    } catch (error) {
+      if (isAuthError(error)) {
+        setAuthError(AUTH_ERROR_MESSAGES[error.message]);
+      } else {
+        setAuthError(AUTH_ERROR_MESSAGES.Unknown);
+      }
+    }
+  };
+
   if (authState === AUTH_STATE.INITIALIZING) {
     return (
       <div className='grid h-screen w-screen place-items-center bg-bg-light text-2xl dark:bg-bg-dark'>
@@ -64,6 +80,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         authState,
         loading,
         login,
+        logout,
         isLoggedIn,
       }}
     >
