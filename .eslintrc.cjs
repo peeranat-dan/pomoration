@@ -11,6 +11,7 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
+    'plugin:storybook/recommended',
     'prettier',
   ],
   parser: '@typescript-eslint/parser',
@@ -24,7 +25,12 @@ module.exports = {
   plugins: ['import', 'react', '@typescript-eslint', 'prettier'],
   rules: {
     'react/jsx-key': 'off',
-    'prettier/prettier': ['error', { singleQuote: true }],
+    'prettier/prettier': [
+      'error',
+      {
+        singleQuote: true,
+      },
+    ],
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
     'import/order': [
@@ -57,7 +63,12 @@ module.exports = {
       },
     ],
     'func-style': ['error', 'expression'],
-    'prefer-arrow-callback': ['error', { allowNamedFunctions: false }],
+    'prefer-arrow-callback': [
+      'error',
+      {
+        allowNamedFunctions: false,
+      },
+    ],
     '@typescript-eslint/consistent-type-imports': 'error',
   },
   settings: {
