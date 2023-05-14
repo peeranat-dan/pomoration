@@ -5,20 +5,8 @@ import { isAuthError } from '@supabase/supabase-js';
 import { auth, loginWithEmailAndPassword } from '@/api/auth';
 
 import { AUTH_ERROR_MESSAGES } from './constants';
-
-type AuthContextProps = {
-  authState: AUTH_STATE;
-  loading: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  authError: string | null;
-};
-
-enum AUTH_STATE {
-  LOGGED_IN = 'LOGGED_IN',
-  NOT_LOGGED_IN = 'NOT_LOGGED_IN',
-  LOGGING_IN = 'LOGGING_IN',
-  INITIALIZING = 'INITIALIZING',
-}
+import type { AuthContextProps } from './types';
+import { AUTH_STATE } from './types';
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 
@@ -58,6 +46,8 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
+  const isLoggedIn = authState === AUTH_STATE.LOGGED_IN;
+
   return (
     <AuthContext.Provider
       value={{
@@ -65,6 +55,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         authState,
         loading,
         login,
+        isLoggedIn,
       }}
     >
       {children}
