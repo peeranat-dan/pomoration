@@ -3,6 +3,7 @@ import { createContext, useState, useEffect, useContext } from 'react';
 import { isAuthError } from '@supabase/supabase-js';
 
 import { auth, loginWithEmailAndPassword } from '@/api/auth';
+import LoadingSpinner from '@/components/loading-spinner';
 
 import { AUTH_ERROR_MESSAGES } from './constants';
 import type { AuthContextProps } from './types';
@@ -45,6 +46,14 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       }
     }
   };
+
+  if (authState === AUTH_STATE.INITIALIZING) {
+    return (
+      <div className='grid h-screen w-screen place-items-center bg-bg-light text-2xl dark:bg-bg-dark'>
+        <LoadingSpinner className='h-10 w-10' />
+      </div>
+    );
+  }
 
   const isLoggedIn = authState === AUTH_STATE.LOGGED_IN;
 
