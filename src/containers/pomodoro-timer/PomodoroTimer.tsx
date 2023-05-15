@@ -28,7 +28,7 @@ const PomodoroTimer = () => {
   return (
     <div
       className={cn(
-        'mx-auto flex items-center justify-center gap-4 rounded-lg py-4 md:gap-2',
+        'mx-auto flex select-none items-center justify-center gap-4 rounded-lg py-4 md:gap-2',
         VARIANTS_STYLE[mode],
       )}
     >
