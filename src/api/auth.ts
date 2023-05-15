@@ -1,31 +1,33 @@
 import { supabaseClient } from '@/libs/supabase';
-import type { SignupFormType } from '@/types/auth';
+import type { LoginFormType, SignupFormType } from '@/types/auth';
 
-export const signup = async (_data: SignupFormType) => {
-  const { data, error } = await supabaseClient.auth.signUp({
-    email: _data.email,
-    password: _data.password,
+export const signup = async (data: SignupFormType) => {
+  const { email, password, displayName } = data;
+  const { data: _data, error } = await supabaseClient.auth.signUp({
+    email,
+    password,
     options: {
       data: {
-        displayName: _data.displayName,
+        displayName,
       },
     },
   });
   if (error) {
     throw error;
   }
-  return { data, error };
+  return { data: _data, error };
 };
 
-export const loginWithEmailAndPassword = async (email: string, password: string) => {
-  const { data, error } = await supabaseClient.auth.signInWithPassword({
+export const loginWithEmailAndPassword = async (data: LoginFormType) => {
+  const { email, password } = data;
+  const { data: _data, error } = await supabaseClient.auth.signInWithPassword({
     email,
     password,
   });
   if (error) {
     throw error;
   }
-  return { data, error };
+  return { data: _data, error };
 };
 
 export const signOut = async () => {
