@@ -2,7 +2,7 @@ import { createContext, useState, useEffect, useContext } from 'react';
 
 import { isAuthError } from '@supabase/supabase-js';
 
-import { auth, loginWithEmailAndPassword } from '@/api/auth';
+import { auth, loginWithEmailAndPassword, signOut } from '@/api/auth';
 import LoadingSpinner from '@/components/loading-spinner';
 
 import { AUTH_ERROR_MESSAGES } from './constants';
@@ -61,11 +61,8 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const logout = async () => {
     try {
-      const { error } = await auth.signOut();
+      await signOut();
       setAuthState(AUTH_STATE.NOT_LOGGED_IN);
-      if (error) {
-        throw error;
-      }
     } catch (error) {
       if (isAuthError(error)) {
         setAuthError(AUTH_ERROR_MESSAGES[error.message]);
