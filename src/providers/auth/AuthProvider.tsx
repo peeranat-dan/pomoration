@@ -2,8 +2,9 @@ import { createContext, useState, useEffect, useContext } from 'react';
 
 import { isAuthError } from '@supabase/supabase-js';
 
-import { auth, loginWithEmailAndPassword, signOut } from '@/api/auth';
+import { auth, loginWithEmailAndPassword, signOut, signup } from '@/api/auth';
 import LoadingSpinner from '@/components/loading-spinner';
+import type { SignupFormType } from '@/types/auth';
 
 import { AUTH_ERROR_MESSAGES } from './constants';
 import type { AuthContextProps, UserData } from './types';
@@ -29,6 +30,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           setUser({
             id: session.user.id,
             email: session.user.email,
+            displayName: session.user.user_metadata?.displayName,
           });
           setLoading(false);
         } else {
@@ -72,6 +74,19 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
+  const signUp = async (data: SignupFormType) => {
+    try {
+      const res = await signup(data);
+      return res;
+    } catch (error) {
+      if (isAuthError(error)) {
+        setAuthError(AUTH_ERROR_MESSAGES[error.message]);
+      } else {
+        setAuthError(AUTH_ERROR_MESSAGES.Unknown);
+      }
+    }
+  };
+
   if (authState === AUTH_STATE.INITIALIZING) {
     return (
       <div className='grid h-screen w-screen place-items-center bg-bg-light text-2xl dark:bg-bg-dark'>
@@ -92,6 +107,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         logout,
         isLoggedIn,
         user,
+        signUp,
       }}
     >
       {children}

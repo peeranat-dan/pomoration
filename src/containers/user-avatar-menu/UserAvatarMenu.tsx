@@ -59,7 +59,7 @@ const UserAvatarMenu = ({
         >
           <Menu.Items className='absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:divide-gray-500 dark:bg-bg-dark'>
             <div className='select-none p-2'>
-              <h5 className='text-2xl'>Guest</h5>
+              <h5 className='text-2xl'>{user.displayName}</h5>
               <div className='text-sm text-gray-500 dark:text-gray-400'>{user.email}</div>
             </div>
             <MenuItem onClick={logout}>

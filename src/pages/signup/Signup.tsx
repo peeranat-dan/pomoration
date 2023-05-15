@@ -6,9 +6,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/card';
 import CenteredLayout from '@/layouts/centered';
 import { useAuthContext } from '@/providers/auth/AuthProvider';
 
-import LoginForm from './components/login-form/LoginForm';
+import SignupForm from './components/signup-form';
 
-const Login = () => {
+const Signup = () => {
   const navigate = useNavigate();
   const { isLoggedIn } = useAuthContext();
   useEffect(() => {
@@ -23,18 +23,14 @@ const Login = () => {
         <Card>
           <CardHeader>
             <CardTitle
-              className='cursor-pointer text-center text-3xl text-primary'
+              className='cursor-pointer select-none text-center text-3xl font-semibold tracking-tight'
               onClick={() => navigate('/')}
             >
-              POMORATION
+              Pomoration
             </CardTitle>
           </CardHeader>
-          <CardContent className='space-y-4'>
-            <LoginForm />
-            <div
-              onClick={() => navigate('/signup')}
-              className='cursor-pointer text-center text-primary duration-200 hover:underline'
-            >{`Don't have any account? Sign up here`}</div>
+          <CardContent>
+            <SignupForm />
           </CardContent>
         </Card>
       </div>
@@ -42,4 +38,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
