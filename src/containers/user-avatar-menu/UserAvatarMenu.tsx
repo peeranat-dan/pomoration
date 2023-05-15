@@ -25,17 +25,17 @@ const UserAvatarMenu = () => {
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content
-          className='mt-2 rounded-md border bg-white p-1 dark:border-gray-500 dark:bg-bg-dark'
+          className='mt-2 select-none rounded-md border bg-white p-1 dark:border-gray-500 dark:bg-bg-dark'
           sideOffset={5}
         >
-          <DropdownMenu.Item className='group px-4 py-2'>
+          <div className='group px-4 py-2'>
             <h4>{user.displayName}</h4>
             <p className='text-sm text-gray-500 dark:text-gray-400'>{user.email}</p>
-          </DropdownMenu.Item>
+          </div>
           <DropdownMenu.Separator className='m-[5px] h-[1px] bg-primary/30' />
           <DropdownMenu.Item
             onClick={handleLogout}
-            className='group flex cursor-pointer gap-2 rounded-md px-4 py-2 text-gray-700 duration-150 hover:bg-red-500 hover:text-white dark:text-white'
+            className='group relative flex cursor-pointer gap-2 rounded-md px-4 py-2 text-gray-700 outline-none duration-150 hover:bg-red-500 hover:text-white dark:text-white'
           >
             <ArrowLeftOnRectangleIcon className='h-5 w-5' />
             <span className='text-sm'>Logout</span>
