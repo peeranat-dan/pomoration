@@ -16,7 +16,7 @@ const SignupForm = () => {
   } = useForm<SignupFormType>({
     resolver: zodResolver(SignupFormSchema),
   });
-  const { signUp, authError } = useAuthContext();
+  const { signUp, authError, loading } = useAuthContext();
 
   const onSubmit = async (data: SignupFormType) => {
     await signUp(data);
@@ -68,7 +68,9 @@ const SignupForm = () => {
             {...register('confirmPassword')}
             error={errors.confirmPassword?.message}
           />
-          <Button type='submit'>Sign up</Button>
+          <Button disabled={loading} type='submit'>
+            Sign up
+          </Button>
         </div>
       </form>
     </>

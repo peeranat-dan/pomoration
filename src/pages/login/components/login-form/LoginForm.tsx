@@ -16,10 +16,10 @@ const LoginForm = () => {
   } = useForm<LoginFormType>({
     resolver: zodResolver(LoginFormSchema),
   });
-  const { login, authError } = useAuthContext();
+  const { login, authError, loading } = useAuthContext();
 
   const onSubmit = async (data: LoginFormType) => {
-    await login(data.email, data.password);
+    await login(data);
   };
 
   return (
@@ -48,7 +48,9 @@ const LoginForm = () => {
             {...register('password')}
             error={errors.password?.message}
           />
-          <Button type='submit'>Login</Button>
+          <Button disabled={loading} type='submit'>
+            Login
+          </Button>
         </div>
       </form>
     </>

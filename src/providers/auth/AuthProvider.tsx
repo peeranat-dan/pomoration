@@ -4,7 +4,7 @@ import { isAuthError } from '@supabase/supabase-js';
 
 import { auth, loginWithEmailAndPassword, signOut, signup } from '@/api/auth';
 import LoadingSpinner from '@/components/loading-spinner';
-import type { SignupFormType } from '@/types/auth';
+import type { LoginFormType, SignupFormType } from '@/types/auth';
 
 import { AUTH_ERROR_MESSAGES } from './constants';
 import type { AuthContextProps, UserData } from './types';
@@ -46,18 +46,19 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
   }, []);
 
-  const login = async (email: string, password: string) => {
+  const login = async (data: LoginFormType) => {
     setAuthState(AUTH_STATE.LOGGING_IN);
     setAuthError(null);
     setLoading(true);
     try {
-      await loginWithEmailAndPassword(email, password);
+      await loginWithEmailAndPassword(data);
     } catch (error) {
       if (isAuthError(error)) {
         setAuthError(AUTH_ERROR_MESSAGES[error.message]);
       } else {
         setAuthError(AUTH_ERROR_MESSAGES.Unknown);
       }
+      setLoading(false);
     }
   };
 
@@ -76,7 +77,9 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const signUp = async (data: SignupFormType) => {
     try {
+      setLoading(true);
       const res = await signup(data);
+      setLoading(false);
       return res;
     } catch (error) {
       if (isAuthError(error)) {
@@ -84,6 +87,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       } else {
         setAuthError(AUTH_ERROR_MESSAGES.Unknown);
       }
+      setLoading(false);
     }
   };
 

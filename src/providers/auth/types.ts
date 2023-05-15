@@ -1,6 +1,6 @@
 import type { AuthResponse, User } from '@supabase/supabase-js';
 
-import type { SignupFormType } from '@/types/auth';
+import type { LoginFormType, SignupFormType } from '@/types/auth';
 
 export enum AUTH_STATE {
   LOGGED_IN = 'LOGGED_IN',
@@ -12,7 +12,7 @@ export enum AUTH_STATE {
 export type AuthContextProps = {
   authState: AUTH_STATE;
   loading: boolean;
-  login: (email: string, password: string) => Promise<void>;
+  login: (data: LoginFormType) => Promise<void>;
   logout: () => Promise<void>;
   signUp: (data: SignupFormType) => Promise<AuthResponse | undefined>;
   authError: string | null;

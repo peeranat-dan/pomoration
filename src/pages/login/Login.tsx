@@ -19,14 +19,14 @@ const Login = () => {
   }, [isLoggedIn]);
   return (
     <CenteredLayout>
-      <div className='mx-auto w-full max-w-md space-y-4 px-4 sm:px-0 md:w-1/3 lg:w-1/4 xl:w-1/4'>
+      <div className='mx-auto w-full max-w-md space-y-4 px-4 sm:px-0 md:w-1/3 xl:w-1/4'>
         <Card>
           <CardHeader>
             <CardTitle
-              className='cursor-pointer text-center text-3xl text-primary'
+              className='cursor-pointer select-none text-center text-3xl font-semibold tracking-tight'
               onClick={() => navigate('/')}
             >
-              POMORATION
+              Pomoration
             </CardTitle>
           </CardHeader>
           <CardContent className='space-y-4'>

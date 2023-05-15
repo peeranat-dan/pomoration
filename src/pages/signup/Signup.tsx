@@ -19,7 +19,7 @@ const Signup = () => {
   }, [isLoggedIn]);
   return (
     <CenteredLayout>
-      <div className='mx-auto w-full max-w-md space-y-4 px-4 sm:px-0 md:w-1/3 lg:w-1/4 xl:w-1/4'>
+      <div className='mx-auto w-full max-w-md space-y-4 px-4 sm:px-0 md:w-1/3 xl:w-1/4'>
         <Card>
           <CardHeader>
             <CardTitle
@@ -29,8 +29,12 @@ const Signup = () => {
               Pomoration
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className='space-y-4'>
             <SignupForm />
+            <div
+              onClick={() => navigate('/login')}
+              className='cursor-pointer text-center text-primary duration-200 hover:underline'
+            >{`Don't have any account? Sign up here`}</div>
           </CardContent>
         </Card>
       </div>
