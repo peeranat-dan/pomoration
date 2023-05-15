@@ -3,7 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/base';
-import Form from '@/components/form/Form';
+import Form from '@/components/form';
 import { useAuthContext } from '@/providers/auth/AuthProvider';
 import type { LoginFormType } from '@/types/auth';
 import { LoginFormSchema } from '@/types/auth';

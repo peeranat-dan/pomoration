@@ -1,4 +1,4 @@
-import Input from './Input';
+import Input from './input/Input';
 
 // NOTE: This pattern is called compounded component
 const Form = ({ children }: { children: React.ReactNode }) => children;
