@@ -1,4 +1,7 @@
-import { ArrowLeftOnRectangleIcon, UserCircleIcon } from '@heroicons/react/24/outline';
+import {
+  ArrowLeftOnRectangleIcon,
+  // UserCircleIcon
+} from '@heroicons/react/24/outline';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,9 +20,9 @@ const UserAvatarMenu = () => {
     await logout();
     navigate('/login');
   };
-  const handleProfile = () => {
-    navigate('/profile');
-  };
+  // const handleProfile = () => {
+  //   navigate('/profile');
+  // };
 
   return (
     <DropdownMenu.Root>
@@ -36,13 +39,13 @@ const UserAvatarMenu = () => {
             <p className='text-sm text-gray-500 dark:text-gray-400'>{user.email}</p>
           </div>
           <DropdownMenu.Separator className='m-[5px] h-[1px] bg-primary/30' />
-          <DropdownMenu.Item
+          {/* <DropdownMenu.Item
             onClick={handleProfile}
             className='group relative flex cursor-pointer gap-2 rounded-md px-4 py-2 text-gray-700 outline-none duration-150 hover:bg-primary-100 hover:text-primary-800 dark:text-white'
           >
             <UserCircleIcon className='h-5 w-5' />
             <span className='text-sm'>Profile</span>
-          </DropdownMenu.Item>
+          </DropdownMenu.Item> */}
           <DropdownMenu.Item
             onClick={handleLogout}
             className='group relative flex cursor-pointer gap-2 rounded-md px-4 py-2 text-gray-700 outline-none duration-150 hover:bg-red-500 hover:text-white dark:text-white'
