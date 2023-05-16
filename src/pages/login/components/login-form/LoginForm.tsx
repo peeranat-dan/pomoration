@@ -37,6 +37,7 @@ const LoginForm = () => {
             id='email'
             placeholder='Email'
             label='Email'
+            autoComplete='email'
             {...register('email')}
             error={errors.email?.message}
           />
@@ -45,6 +46,7 @@ const LoginForm = () => {
             type='password'
             id='password'
             placeholder='Password'
+            autoComplete='current-password'
             {...register('password')}
             error={errors.password?.message}
           />
