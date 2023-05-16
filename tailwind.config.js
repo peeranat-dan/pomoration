@@ -18,7 +18,25 @@ export default {
         'bg-dark': '#2c2c2c',
         // Card
         card: {
+          background: {
+            light: '#fff',
+            dark: '#222123',
+          },
           description: '#64748b',
+        },
+        input: {
+          text: {
+            light: '',
+            dark: '#727172',
+          },
+          background: {
+            light: '#fff',
+            dark: '#1E1D1E',
+          },
+          border: {
+            light: '#e2e8f0',
+            dark: '#373537',
+          },
         },
         // Primary
         primary: {

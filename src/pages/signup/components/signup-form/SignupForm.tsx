@@ -68,7 +68,7 @@ const SignupForm = () => {
             {...register('confirmPassword')}
             error={errors.confirmPassword?.message}
           />
-          <Button disabled={loading} type='submit'>
+          <Button disabled={loading} type='submit' className='mt-4'>
             Sign up
           </Button>
         </div>

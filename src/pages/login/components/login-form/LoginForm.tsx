@@ -48,7 +48,7 @@ const LoginForm = () => {
             {...register('password')}
             error={errors.password?.message}
           />
-          <Button disabled={loading} type='submit'>
+          <Button disabled={loading} type='submit' className='mt-4'>
             Login
           </Button>
         </div>
