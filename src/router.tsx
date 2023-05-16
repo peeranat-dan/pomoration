@@ -4,6 +4,7 @@ import BaseLayout from './layouts/base';
 import CenteredLayout from './layouts/centered';
 import Home from './pages/home';
 import Login from './pages/login';
+import NotFound from './pages/not-found/NotFound';
 // import Profile from './pages/profile';
 import Signup from './pages/signup';
 import AdminAuthGuard from './providers/auth/AuthGuard';
@@ -32,6 +33,16 @@ const AppRouter = () => {
         >
           {/* <Route path='/profile' element={<Profile />} /> */}
         </Route>
+      </Routes>
+      <Routes>
+        <Route
+          path='*'
+          element={
+            <CenteredLayout>
+              <NotFound />
+            </CenteredLayout>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
