@@ -8,10 +8,12 @@ const FormCardHeader = () => {
   return (
     <CardHeader className='bg-primary-100'>
       <div
-        className='mx-auto flex w-fit cursor-pointer select-none items-center justify-center gap-1 text-center duration-100 hover:scale-105'
+        className='mx-auto flex w-fit cursor-pointer select-none items-center justify-center gap-1 text-center duration-100'
         onClick={() => navigate('/')}
       >
-        <CardTitle className='text-3xl font-medium text-primary-700'>Pomoration</CardTitle>
+        <CardTitle className='text-3xl font-medium text-primary-700 dark:text-primary-700'>
+          Pomoration
+        </CardTitle>
         <ClockIcon className='h-10 w-10 text-primary-700' />
       </div>
     </CardHeader>

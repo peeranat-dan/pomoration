@@ -21,7 +21,7 @@ const Signup = () => {
   return (
     <CenteredLayout>
       <div className='mx-auto w-full max-w-md space-y-4 px-4 sm:px-0 md:w-1/3 xl:w-1/4'>
-        <Card className='space-y-4'>
+        <Card className='space-y-4 border dark:border-gray-400'>
           <FormCardHeader />
           <CardContent className='space-y-4'>
             <SignupForm />
