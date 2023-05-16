@@ -17,12 +17,9 @@ const AppRouter = () => {
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
         </Route>
-
         <Route element={<BaseLayout />}>
           <Route index element={<Home />} />
         </Route>
-      </Routes>
-      <Routes>
         <Route
           element={
             <AdminAuthGuard>
