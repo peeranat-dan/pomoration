@@ -25,7 +25,7 @@ const UserAvatarMenu = () => {
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content
-          className='mt-2 select-none rounded-md border bg-white p-1 dark:border-gray-500 dark:bg-bg-dark'
+          className='mr-2 mt-2 select-none rounded-md border bg-white p-1 dark:border-gray-500 dark:bg-bg-dark md:mr-0'
           sideOffset={5}
         >
           <div className='group px-4 py-2'>
