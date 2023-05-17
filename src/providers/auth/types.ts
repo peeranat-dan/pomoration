@@ -1,4 +1,4 @@
-import type { AuthResponse, User } from '@supabase/supabase-js';
+import type { AuthResponse, Session, User } from '@supabase/supabase-js';
 
 import type { LoginFormType, SignupFormType } from '@/types/auth';
 
@@ -26,4 +26,4 @@ export type UserData = {
   displayName: string;
 };
 
-export type { User };
+export type { Session, User };

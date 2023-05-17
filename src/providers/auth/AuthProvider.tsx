@@ -7,7 +7,7 @@ import LoadingSpinner from '@/components/loading-spinner';
 import type { LoginFormType, SignupFormType } from '@/types/auth';
 
 import { AUTH_ERROR_MESSAGES } from './constants';
-import type { AuthContextProps, UserData } from './types';
+import type { AuthContextProps, Session, UserData } from './types';
 import { AUTH_STATE } from './types';
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -18,32 +18,40 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [authError, setAuthError] = useState<string | null>(null);
   const [user, setUser] = useState<UserData | null>(null);
 
-  useEffect(() => {
-    const { data } = auth.onAuthStateChange((_, session) => {
-      if (!session) {
+  const getUserValue = (session: Session | null) => {
+    if (!session) {
+      setAuthState(AUTH_STATE.NOT_LOGGED_IN);
+      setUser(null);
+      setLoading(false);
+    } else {
+      if (session.user.email) {
+        setAuthState(AUTH_STATE.LOGGED_IN);
+        setUser({
+          id: session.user.id,
+          email: session.user.email,
+          displayName: session.user.user_metadata?.displayName,
+        });
+        setLoading(false);
+      } else {
         setAuthState(AUTH_STATE.NOT_LOGGED_IN);
         setUser(null);
         setLoading(false);
-      } else {
-        if (session.user.email) {
-          setAuthState(AUTH_STATE.LOGGED_IN);
-          setUser({
-            id: session.user.id,
-            email: session.user.email,
-            displayName: session.user.user_metadata?.displayName,
-          });
-          setLoading(false);
-        } else {
-          setAuthState(AUTH_STATE.NOT_LOGGED_IN);
-          setUser(null);
-          setLoading(false);
-        }
       }
+    }
+  };
+
+  useEffect(() => {
+    auth.getSession().then(({ data: { session } }) => {
+      getUserValue(session);
     });
 
-    return () => {
-      data.subscription.unsubscribe();
-    };
+    const {
+      data: { subscription },
+    } = auth.onAuthStateChange((_, session) => {
+      getUserValue(session);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   const login = async (data: LoginFormType) => {
