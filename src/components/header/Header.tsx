@@ -1,7 +1,8 @@
 import { ClockIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
 
-import ThemeToggle from '@/containers/theme-toggle';
+import SettingButton from '@/containers/setting-button';
+// import ThemeToggle from '@/containers/theme-toggle';
 import UserAvatarMenu from '@/containers/user-avatar-menu';
 import { useAuthContext } from '@/providers/auth/AuthProvider';
 
@@ -20,7 +21,7 @@ const Header = () => {
         <ClockIcon className='h-6 w-6 stroke-2' />
       </div>
       <div className='flex items-center gap-2'>
-        <ThemeToggle />
+        <SettingButton />
         {isLoggedIn ? (
           <UserAvatarMenu />
         ) : (
