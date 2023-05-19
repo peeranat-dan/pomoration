@@ -10,7 +10,7 @@ import { usePomodoroTimer } from '@/utils/usePomodoroTimer';
 
 const VARIANTS_STYLE: Record<PomodoroMode, string> = {
   shortBreak: 'bg-blue-050 text-blue-800',
-  focus: 'text-primary dark:text-primary-200',
+  focus: 'text-black dark:text-gray-200',
   longBreak: 'bg-green-050 text-green-800',
 } as const;
 
@@ -38,7 +38,7 @@ const PomodoroTimer = () => {
           <div className='text-lg'>{VARIANTS_TITLE[mode]}</div>
         </div>
         {isRunning ? (
-          <Button className='w-full' onClick={pauseTimer}>
+          <Button color='red' className='w-full' onClick={pauseTimer}>
             Pause
           </Button>
         ) : (
