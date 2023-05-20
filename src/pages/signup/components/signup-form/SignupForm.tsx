@@ -8,7 +8,11 @@ import { useAuthContext } from '@/providers/auth/AuthProvider';
 import type { SignupFormType } from '@/types/auth';
 import { SignupFormSchema } from '@/types/auth';
 
-const SignupForm = () => {
+type SignupFormProps = {
+  onSignup: (data: Record<string, string>) => void;
+};
+
+const SignupForm = ({ onSignup }: SignupFormProps) => {
   const {
     register,
     handleSubmit,
@@ -18,8 +22,8 @@ const SignupForm = () => {
   });
   const { signUp, authError, loading } = useAuthContext();
 
-  const onSubmit = async (data: SignupFormType) => {
-    await signUp(data);
+  const onSubmit = (data: SignupFormType) => {
+    signUp(data).then(() => onSignup({ email: data.email }));
   };
 
   return (

@@ -11,12 +11,18 @@ import SignupForm from './components/signup-form';
 const Signup = () => {
   const navigate = useNavigate();
   const { isLoggedIn } = useAuthContext();
+
   useEffect(() => {
     if (isLoggedIn) {
       navigate('/');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedIn]);
+
+  const handleVerifyRoute = (data: Record<string, string>) => {
+    navigate('/verify', { state: { email: data.email } });
+  };
+
   return (
     <div className='mx-auto w-full max-w-md space-y-4 px-4 sm:px-0 md:w-1/3 xl:w-1/4'>
       <Card className='border-none shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_0_16px_1px_#8662C7]'>
@@ -35,7 +41,7 @@ const Signup = () => {
           </CardDescription>
         </CardHeader>
         <CardContent className='space-y-8'>
-          <SignupForm />
+          <SignupForm onSignup={handleVerifyRoute} />
           <div className='text-center'>
             <p>
               Already have an account?
