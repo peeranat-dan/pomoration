@@ -1,4 +1,4 @@
-import { supabaseClient } from '@/libs/supabase';
+import { supabaseClient } from '@/libs/supabase/initialize';
 import type { LoginFormType, SignupFormType } from '@/types/auth';
 
 export const signup = async (data: SignupFormType) => {
