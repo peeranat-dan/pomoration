@@ -9,9 +9,9 @@ import { toMMSS } from '@/utils/formatTime';
 import { usePomodoroTimer } from '@/utils/usePomodoroTimer';
 
 const VARIANTS_STYLE: Record<PomodoroMode, string> = {
-  shortBreak: 'bg-blue-050 text-blue-800',
+  shortBreak: 'text-blue-800 dark:text-blue-200',
   focus: 'text-black dark:text-gray-200',
-  longBreak: 'bg-green-050 text-green-800',
+  longBreak: 'text-green-800 dark:text-green-200',
 } as const;
 
 const VARIANTS_TITLE: Record<PomodoroMode, string> = {
