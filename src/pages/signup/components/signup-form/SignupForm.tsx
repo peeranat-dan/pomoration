@@ -1,5 +1,5 @@
-import { ExclamationCircleIcon } from '@heroicons/react/24/solid';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { AlertCircle } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/base';
@@ -30,7 +30,7 @@ const SignupForm = ({ onSignup }: SignupFormProps) => {
     <>
       {authError ? (
         <div className='mb-4 flex items-center gap-2 rounded-md bg-red-50 p-4 text-red-800'>
-          <ExclamationCircleIcon className='h-6 w-6 shrink-0 text-red-800' aria-hidden='true' />
+          <AlertCircle className='h-6 w-6 shrink-0 text-red-800' aria-hidden='true' />
           <span>{authError}</span>
         </div>
       ) : null}

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { ClockIcon } from '@heroicons/react/24/outline';
+import { Clock } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card';
@@ -34,7 +34,7 @@ const Signup = () => {
             <CardTitle className='text-2xl font-normal text-primary-700 dark:text-white'>
               Pomoration
             </CardTitle>
-            <ClockIcon className='h-8 w-8 text-primary-700 dark:text-primary-200' />
+            <Clock className='h-8 w-8 text-primary-700 dark:text-primary-200' />
           </div>
           <CardDescription className='mt-0 text-gray-400 dark:text-gray-400'>
             Create a new account

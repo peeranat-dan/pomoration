@@ -1,8 +1,5 @@
-import {
-  ArrowLeftOnRectangleIcon,
-  // UserCircleIcon
-} from '@heroicons/react/24/outline';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import { LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 import Avatar from '@/components/avatar/Avatar';
@@ -50,7 +47,7 @@ const UserAvatarMenu = () => {
             onClick={handleLogout}
             className='group relative flex cursor-pointer gap-2 rounded-md px-4 py-2 text-gray-700 outline-none duration-150 hover:bg-red-500 hover:text-white dark:text-white'
           >
-            <ArrowLeftOnRectangleIcon className='h-5 w-5' />
+            <LogOut className='h-5 w-5' />
             <span className='text-sm'>Logout</span>
           </DropdownMenu.Item>
         </DropdownMenu.Content>

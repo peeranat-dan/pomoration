@@ -1,4 +1,4 @@
-import { ClockIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
+import { Clock, Mail } from 'lucide-react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card';
@@ -24,7 +24,7 @@ const Verify = () => {
             <CardTitle className='text-2xl font-normal text-primary-700 dark:text-white'>
               Pomoration
             </CardTitle>
-            <ClockIcon className='h-8 w-8 text-primary-700 dark:text-primary-200' />
+            <Clock className='h-8 w-8 text-primary-700 dark:text-primary-200' />
           </div>
           <CardDescription className='mt-0 text-gray-400 dark:text-gray-400'>
             {email}
@@ -32,7 +32,7 @@ const Verify = () => {
         </CardHeader>
         <CardContent className='mb-3 space-y-4 text-center'>
           <div className='space-y-2'>
-            <EnvelopeIcon className='mx-auto h-16 w-16 text-primary-700 dark:text-primary-200' />
+            <Mail className='mx-auto h-16 w-16 text-primary-700 dark:text-primary-200' />
             <h4 className='text-black dark:text-gray-100'>Thank you for signing up!</h4>
             <p className='leading-tight text-gray-500 dark:text-gray-400'>
               A verification email has been sent to your email address. Please check your inbox.

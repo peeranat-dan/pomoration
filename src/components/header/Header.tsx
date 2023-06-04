@@ -1,4 +1,4 @@
-import { ClockIcon } from '@heroicons/react/24/outline';
+import { Clock } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 import SettingButton from '@/containers/setting-button';
@@ -18,7 +18,7 @@ const Header = () => {
         onClick={() => navigate('/')}
       >
         Pomoration
-        <ClockIcon className='h-6 w-6 stroke-2' />
+        <Clock className='h-6 w-6 stroke-2' />
       </div>
       <div className='flex items-center gap-2'>
         <SettingButton />

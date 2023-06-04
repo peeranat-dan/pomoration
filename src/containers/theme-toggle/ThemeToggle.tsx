@@ -1,5 +1,5 @@
-import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import * as Switch from '@radix-ui/react-switch';
+import { Moon, Sun } from 'lucide-react';
 
 import { useThemeContext } from '@/providers/ThemeProvider';
 import { cn } from '@/utils/classnames';
@@ -38,7 +38,7 @@ const ThemeToggle = ({ mode = 'toggle' }: { mode: 'switch' | 'toggle' }) => {
         isDark ? 'text-white' : 'text-black',
       )}
     >
-      {isDark ? <SunIcon className=' h-6 w-6' /> : <MoonIcon className='h-6 w-6' />}
+      {isDark ? <Sun className=' h-6 w-6' /> : <Moon className='h-6 w-6' />}
     </button>
   );
 };

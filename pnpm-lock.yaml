@@ -1,9 +1,6 @@
 lockfileVersion: '6.0'
 
 dependencies:
-  '@heroicons/react':
-    specifier: ^2.0.17
-    version: 2.0.17(react@18.2.0)
   '@hookform/resolvers':
     specifier: ^3.1.0
     version: 3.1.0(react-hook-form@7.43.9)
@@ -31,6 +28,9 @@ dependencies:
   clsx:
     specifier: ^1.2.1
     version: 1.2.1
+  lucide-react:
+    specifier: ^0.234.0
+    version: 0.234.0(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -1737,14 +1737,6 @@ packages:
       use-isomorphic-layout-effect: 1.1.2(@types/react@18.2.6)(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
-    dev: false
-
-  /@heroicons/react@2.0.17(react@18.2.0):
-    resolution: {integrity: sha512-90GMZktkA53YbNzHp6asVEDevUQCMtxWH+2UK2S8OpnLEu7qckTJPhNxNQG52xIR1WFTwFqtH6bt7a60ZNcLLA==}
-    peerDependencies:
-      react: '>= 16'
-    dependencies:
-      react: 18.2.0
     dev: false
 
   /@hookform/resolvers@3.1.0(react-hook-form@7.43.9):
@@ -6582,6 +6574,14 @@ packages:
     dependencies:
       yallist: 4.0.0
     dev: true
+
+  /lucide-react@0.234.0(react@18.2.0):
+    resolution: {integrity: sha512-7MtwK9zPXyvpHv9Tf0anraIjI9yRDdkfYIPt8KOC54NvimBAxbNpeIBb5/f+tZVIkN0hMgZdrAFugZe4YPZHcA==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /magic-string@0.27.0:
     resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}

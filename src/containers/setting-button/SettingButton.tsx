@@ -1,5 +1,5 @@
-import { Cog6ToothIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import * as Dialog from '@radix-ui/react-dialog';
+import { Settings, X } from 'lucide-react';
 
 import { Button } from '@/components/base';
 import { useThemeContext } from '@/providers/ThemeProvider';
@@ -20,7 +20,7 @@ const SettingButton = () => {
             isDark ? 'text-white' : 'text-black',
           )}
         >
-          <Cog6ToothIcon className='h-6 w-6' />
+          <Settings className='h-6 w-6' />
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
@@ -38,7 +38,7 @@ const SettingButton = () => {
               className='absolute right-[10px] top-[10px] inline-flex appearance-none items-center justify-center rounded-full p-1 text-primary duration-100 hover:bg-primary-100 focus:shadow-[0_0_0_2px] focus:outline-none'
               aria-label='Close'
             >
-              <XMarkIcon className='h-6 w-6' />
+              <X className='h-6 w-6' />
             </button>
           </Dialog.Close>
         </Dialog.Content>
