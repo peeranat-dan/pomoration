@@ -11,7 +11,6 @@ const CardTitle = forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLHead
     />
   ),
 );
-
 CardTitle.displayName = 'CardTitle';
 
 export default CardTitle;
