@@ -11,7 +11,7 @@ const ThemeToggle = ({ mode = 'toggle' }: { mode: 'switch' | 'toggle' }) => {
 
   if (mode === 'switch') {
     return (
-      <div className='flex items-center' style={{ display: 'flex', alignItems: 'center' }}>
+      <div className='flex items-center'>
         <label
           className='pr-[15px] text-[15px] leading-none text-gray-500 dark:text-gray-400'
           htmlFor='theme-mode'
@@ -19,7 +19,7 @@ const ThemeToggle = ({ mode = 'toggle' }: { mode: 'switch' | 'toggle' }) => {
           Dark Mode
         </label>
         <Switch.Root
-          className='relative h-[25px] w-[42px] cursor-default rounded-full bg-primary outline-none focus:shadow-black data-[state=checked]:bg-primary-200'
+          className='relative h-[25px] w-[42px] cursor-default rounded-full bg-primary outline-none focus:shadow-black data-[state=checked]:bg-slate-500'
           id='theme-mode'
           defaultChecked={isDark}
           onCheckedChange={() => setTheme(isDark ? 'light' : 'dark')}
@@ -34,7 +34,7 @@ const ThemeToggle = ({ mode = 'toggle' }: { mode: 'switch' | 'toggle' }) => {
     <button
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       className={cn(
-        'rounded-full p-2 duration-200 hover:bg-gray-100  hover:text-primary-500',
+        'hover:text-primary-500 rounded-full p-2 duration-200  hover:bg-gray-100',
         isDark ? 'text-white' : 'text-black',
       )}
     >

@@ -11,7 +11,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-primary text-white hover:bg-primary-600 disabled:bg-gray-200 disabled:text-gray-400 disabled:hover:bg-gray-200 disabled:hover:cursor-not-allowed dark:bg-primary-300 dark:hover:bg-primary dark:text-white dark:hover:text-white',
+          'disabled:bg-gray-200 disabled:text-gray-400 disabled:hover:bg-gray-200 disabled:hover:cursor-not-allowed',
         secondary:
           'bg-primary-100 text-primary-900 hover:bg-primary-200 disabled:bg-gray-200 disabled:text-gray-400 disabled:hover:bg-gray-200 disabled:hover:cursor-not-allowed',
         outlined:
@@ -20,7 +20,7 @@ const buttonVariants = cva(
       },
       color: {
         primary:
-          'bg-primary text-white hover:bg-primary-600 dark:bg-primary-300 dark:hover:bg-primary',
+          'bg-primary text-white dark:text-black hover:bg-primary/90  dark:bg-primary dark:hover:bg-primary/80',
         red: 'bg-red-500 text-white hover:bg-red-600 dark:bg-red-500 dark:hover:bg-red-600',
         teal: 'bg-teal-vivid text-white hover:bg-teal-vivid-600 dark:bg-teal-vivid-300 dark:hover:bg-teal-vivid-400',
         neutral:

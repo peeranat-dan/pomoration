@@ -36,42 +36,50 @@ const SignupForm = ({ onSignup }: SignupFormProps) => {
       ) : null}
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='flex flex-col gap-4'>
-          <Form.Input
-            type='text'
-            id='displayName'
-            placeholder='What should we call you?'
-            label='Display Name'
-            autoComplete='name'
-            {...register('displayName')}
-            error={errors.displayName?.message}
-          />
-          <Form.Input
-            type='email'
-            id='email'
-            placeholder='Please input your email'
-            label='Email'
-            autoComplete='email'
-            {...register('email')}
-            error={errors.email?.message}
-          />
-          <Form.Input
-            label='Password'
-            type='password'
-            id='password'
-            placeholder='Please input 8 or more characters'
-            autoComplete='new-password'
-            {...register('password')}
-            error={errors.password?.message}
-          />
-          <Form.Input
-            label='Confirm Password'
-            type='password'
-            id='confirmPassword'
-            placeholder='Please confirm your password'
-            autoComplete='new-password'
-            {...register('confirmPassword')}
-            error={errors.confirmPassword?.message}
-          />
+          <div className='space-y-2'>
+            <Form.Label htmlFor='displayName'>Display Name</Form.Label>
+            <Form.Input
+              type='text'
+              id='displayName'
+              placeholder='What should we call you?'
+              autoComplete='name'
+              {...register('displayName')}
+              error={errors.displayName?.message}
+            />
+          </div>
+          <div className='space-y-2'>
+            <Form.Label htmlFor='email'>Email</Form.Label>
+            <Form.Input
+              type='email'
+              id='email'
+              placeholder='Please input your email'
+              autoComplete='email'
+              {...register('email')}
+              error={errors.email?.message}
+            />
+          </div>
+          <div className='space-y-2'>
+            <Form.Label htmlFor='password'>Password</Form.Label>
+            <Form.Input
+              type='password'
+              id='password'
+              placeholder='Please input 8 or more characters'
+              autoComplete='new-password'
+              {...register('password')}
+              error={errors.password?.message}
+            />
+          </div>
+          <div className='space-y-2'>
+            <Form.Label htmlFor='confirmPassword'>Confirm Password</Form.Label>
+            <Form.Input
+              type='password'
+              id='confirmPassword'
+              placeholder='Please confirm your password'
+              autoComplete='new-password'
+              {...register('confirmPassword')}
+              error={errors.confirmPassword?.message}
+            />
+          </div>
           <Button disabled={loading} type='submit' className='mt-4'>
             Sign up
           </Button>

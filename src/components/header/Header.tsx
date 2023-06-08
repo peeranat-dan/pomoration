@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <header className='header nav mx-auto flex max-w-xl items-center justify-between px-4 py-6 sm:px-0'>
       <div
-        className='flex cursor-pointer select-none items-center gap-1 text-2xl font-semibold tracking-tight text-primary-700 dark:text-primary-100'
+        className='flex cursor-pointer select-none items-center gap-1 text-2xl font-semibold tracking-tight text-primary dark:text-primary'
         onClick={() => navigate('/')}
       >
         Pomoration
@@ -25,9 +25,7 @@ const Header = () => {
         {isLoggedIn ? (
           <UserAvatarMenu />
         ) : (
-          <Button variant='secondary' onClick={() => navigate('/login')}>
-            Login
-          </Button>
+          <Button onClick={() => navigate('/login')}>Login</Button>
         )}
       </div>
     </header>

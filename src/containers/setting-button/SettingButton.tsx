@@ -16,7 +16,7 @@ const SettingButton = () => {
       <Dialog.Trigger asChild>
         <button
           className={cn(
-            'rounded-full p-2 duration-200 hover:bg-gray-100  hover:text-primary-500',
+            'hover:text-primary-500 rounded-full p-2 duration-200  hover:bg-gray-100',
             isDark ? 'text-white' : 'text-black',
           )}
         >
@@ -24,8 +24,8 @@ const SettingButton = () => {
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className='fixed inset-0 bg-black/30 data-[state=open]:animate-overlayShow' />
-        <Dialog.Content className='fixed left-[50%] top-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] space-y-4 rounded-[6px] bg-white p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none data-[state=open]:animate-contentShow dark:bg-bg-dark'>
+        <Dialog.Overlay className='fixed inset-0 bg-black/30 data-[state=open]:animate-overlayShow dark:bg-gray-600/30' />
+        <Dialog.Content className='fixed left-[50%] top-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] space-y-4 rounded-[6px] bg-background p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none data-[state=open]:animate-contentShow dark:bg-background/80'>
           <Dialog.Title className='text-[20px] font-medium text-black'>Setting</Dialog.Title>
           <ThemeToggle mode='switch' />
           <div className='flex justify-end'>
@@ -35,7 +35,7 @@ const SettingButton = () => {
           </div>
           <Dialog.Close asChild>
             <button
-              className='absolute right-[10px] top-[10px] inline-flex appearance-none items-center justify-center rounded-full p-1 text-primary duration-100 hover:bg-primary-100 focus:shadow-[0_0_0_2px] focus:outline-none'
+              className='hover:bg-primary-100 absolute right-[10px] top-[10px] inline-flex appearance-none items-center justify-center rounded-full p-1 text-primary duration-100 focus:shadow-[0_0_0_2px] focus:outline-none'
               aria-label='Close'
             >
               <X className='h-6 w-6' />

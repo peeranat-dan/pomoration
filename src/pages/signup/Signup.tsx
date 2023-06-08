@@ -25,16 +25,14 @@ const Signup = () => {
 
   return (
     <div className='mx-auto w-full max-w-md space-y-4 px-4 sm:px-0 md:w-1/3 xl:w-1/4'>
-      <Card className='border-none shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_0_16px_1px_#8662C7]'>
+      <Card className='border'>
         <CardHeader className='space-y-0'>
           <div
             className='flex w-fit cursor-pointer select-none items-center gap-1 text-center duration-100'
             onClick={() => navigate('/')}
           >
-            <CardTitle className='text-2xl font-normal text-primary-700 dark:text-white'>
-              Pomoration
-            </CardTitle>
-            <Clock className='h-8 w-8 text-primary-700 dark:text-primary-200' />
+            <CardTitle className='text-2xl font-normal'>Pomoration</CardTitle>
+            <Clock className='h-8 w-8' />
           </div>
           <CardDescription className='mt-0 text-gray-400 dark:text-gray-400'>
             Create a new account
@@ -42,12 +40,12 @@ const Signup = () => {
         </CardHeader>
         <CardContent className='space-y-8'>
           <SignupForm onSignup={handleVerifyRoute} />
-          <div className='text-center'>
-            <p>
+          <div className='text-center text-sm'>
+            <p className='text-muted-foreground'>
               Already have an account?
               <a
                 href='/login'
-                className='ml-1 cursor-pointer text-primary duration-200 hover:underline dark:text-primary-200'
+                className='ml-1 text-primary duration-200 hover:underline'
               >{`Login`}</a>
             </p>
           </div>

@@ -16,7 +16,6 @@ export default {
         'bg-light': '#fff',
         // Dark
         'bg-dark': '#2c2c2c',
-        // Card
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -44,16 +43,8 @@ export default {
         },
         // Primary
         primary: {
-          '050': '#EAE2F8',
-          100: '#CFBCF2',
-          200: '#A081D9',
-          300: '#8662C7',
-          DEFAULT: '#724BB7',
-          500: '#653CAD',
-          600: '#51279B',
-          700: '#421987',
-          800: '#34126F',
-          900: '#240754',
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
         },
         // Secondary
         secondary: {

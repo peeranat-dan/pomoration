@@ -24,7 +24,9 @@ const UserAvatarMenu = () => {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild className='flex cursor-pointer items-center gap-2'>
-        <Avatar.Text size='md'>{user.displayName.substring(0, 1)}</Avatar.Text>
+        <Avatar.Text size='md' className='text-muted'>
+          {user.displayName.substring(0, 1)}
+        </Avatar.Text>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content
