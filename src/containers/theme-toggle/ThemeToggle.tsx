@@ -34,7 +34,7 @@ const ThemeToggle = ({ mode = 'toggle' }: { mode: 'switch' | 'toggle' }) => {
     <button
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       className={cn(
-        'hover:text-primary-500 rounded-full p-2 duration-200  hover:bg-gray-100',
+        'rounded-full p-2 duration-200 hover:bg-gray-100  hover:text-primary/50',
         isDark ? 'text-white' : 'text-black',
       )}
     >

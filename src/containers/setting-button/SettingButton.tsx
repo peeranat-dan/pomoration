@@ -16,7 +16,7 @@ const SettingButton = () => {
       <Dialog.Trigger asChild>
         <button
           className={cn(
-            'hover:text-primary-500 rounded-full p-2 duration-200  hover:bg-gray-100',
+            'rounded-full p-2 duration-200 hover:bg-gray-100 hover:text-primary/90 dark:hover:bg-primary/50 dark:hover:text-primary',
             isDark ? 'text-white' : 'text-black',
           )}
         >
@@ -35,7 +35,7 @@ const SettingButton = () => {
           </div>
           <Dialog.Close asChild>
             <button
-              className='hover:bg-primary-100 absolute right-[10px] top-[10px] inline-flex appearance-none items-center justify-center rounded-full p-1 text-primary duration-100 focus:shadow-[0_0_0_2px] focus:outline-none'
+              className='absolute right-[10px] top-[10px] inline-flex appearance-none items-center justify-center rounded-full p-1 text-primary duration-100 hover:bg-primary/10 focus:shadow-[0_0_0_2px] focus:outline-none'
               aria-label='Close'
             >
               <X className='h-6 w-6' />

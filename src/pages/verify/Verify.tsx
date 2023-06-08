@@ -21,10 +21,10 @@ const Verify = () => {
             className='flex w-fit cursor-pointer select-none items-center gap-1 text-center duration-100'
             onClick={() => navigate('/')}
           >
-            <CardTitle className='text-2xl font-normal text-primary-700 dark:text-white'>
+            <CardTitle className='text-2xl font-normal text-primary dark:text-primary'>
               Pomoration
             </CardTitle>
-            <Clock className='h-8 w-8 text-primary-700 dark:text-primary-200' />
+            <Clock className='h-8 w-8 text-primary dark:text-primary' />
           </div>
           <CardDescription className='mt-0 text-gray-400 dark:text-gray-400'>
             {email}
@@ -32,7 +32,7 @@ const Verify = () => {
         </CardHeader>
         <CardContent className='mb-3 space-y-4 text-center'>
           <div className='space-y-2'>
-            <Mail className='mx-auto h-16 w-16 text-primary-700 dark:text-primary-200' />
+            <Mail className='mx-auto h-16 w-16 text-primary dark:text-primary' />
             <h4 className='text-black dark:text-gray-100'>Thank you for signing up!</h4>
             <p className='leading-tight text-gray-500 dark:text-gray-400'>
               A verification email has been sent to your email address. Please check your inbox.

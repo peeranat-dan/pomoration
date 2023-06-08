@@ -25,10 +25,10 @@ const Login = () => {
             className='flex w-fit cursor-pointer select-none items-center gap-1 text-center duration-100'
             onClick={() => navigate('/')}
           >
-            <CardTitle className='text-primary-700 text-2xl font-normal dark:text-white'>
+            <CardTitle className='text-2xl font-normal text-primary dark:text-primary'>
               Pomoration
             </CardTitle>
-            <Clock className='text-primary-700 dark:text-primary-200 h-8 w-8' />
+            <Clock className='h-8 w-8 text-primary dark:text-primary' />
           </div>
           <CardDescription className='mt-0 text-gray-400 dark:text-gray-400'>
             Please login to continue

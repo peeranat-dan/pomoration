@@ -10,7 +10,7 @@ const LoadingSpinner = ({ className = '' }: LoadingSpinnerProps) => {
       <div role='status'>
         <svg
           className={cn(
-            'm-auto h-6 max-h-full w-6 max-w-full animate-spin fill-primary text-gray-200 dark:fill-primary-200 dark:text-gray-500',
+            'm-auto h-6 max-h-full w-6 max-w-full animate-spin fill-primary text-gray-200 dark:fill-primary dark:text-gray-500',
             className,
           )}
           viewBox='0 0 100 100'

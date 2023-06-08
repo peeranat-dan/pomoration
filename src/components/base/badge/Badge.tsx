@@ -6,9 +6,9 @@ const ROUNDED_STYLES = {
 };
 
 const COLOR_STYLES = {
-  primary: 'bg-primary-500 text-white',
+  primary: 'bg-primary text-white',
   secondary: 'bg-neutral-500 text-white',
-  'outlined-primary': 'bg-transparent border border-primary-500 text-primary-500',
+  'outlined-primary': 'bg-transparent border border-primary text-primary',
   'outlined-secondary': 'bg-transparent border border-neutral-500 text-neutral-500',
 };
 
