@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/base';
 import Form from '@/components/form';
+import Label from '@/components/form/label';
 import { useAuthContext } from '@/providers/auth/AuthProvider';
 import type { LoginFormType } from '@/types/auth';
 import { LoginFormSchema } from '@/types/auth';
@@ -32,24 +33,28 @@ const LoginForm = () => {
       ) : null}
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='flex flex-col gap-4'>
-          <Form.Input
-            type='email'
-            id='email'
-            placeholder='Email'
-            label='Email'
-            autoComplete='email'
-            {...register('email')}
-            error={errors.email?.message}
-          />
-          <Form.Input
-            label='Password'
-            type='password'
-            id='password'
-            placeholder='Password'
-            autoComplete='current-password'
-            {...register('password')}
-            error={errors.password?.message}
-          />
+          <div className='flex flex-col gap-2'>
+            <Label htmlFor='email'>Email</Label>
+            <Form.Input
+              type='email'
+              id='email'
+              placeholder='Email'
+              autoComplete='email'
+              {...register('email')}
+              error={errors.email?.message}
+            />
+          </div>
+          <div className='flex flex-col gap-2'>
+            <Label htmlFor='password'>Password</Label>
+            <Form.Input
+              type='password'
+              id='password'
+              placeholder='Password'
+              autoComplete='current-password'
+              {...register('password')}
+              error={errors.password?.message}
+            />
+          </div>
           <Button disabled={loading} type='submit' className='mt-4'>
             Login
           </Button>
