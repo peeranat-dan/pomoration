@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import type { PomodoroMode } from '@/types/pomodoro';
 
@@ -13,6 +13,8 @@ export const usePomodoroTimer = (
   const [mode, setMode] = useState<PomodoroMode>('focus');
   const [pomodoroCount, setPomodoroCount] = useState<number>(0);
 
+  const audioRef = useRef(new Audio('/sound/end.wav'));
+
   useEffect(() => {
     let intervalId: NodeJS.Timer;
 
@@ -24,7 +26,7 @@ export const usePomodoroTimer = (
 
     if (timeLeft === 0) {
       setIsRunning(false);
-
+      audioRef.current.play();
       if (mode === 'focus') {
         setPomodoroCount((prevPomodoroCount) => {
           const nextPomodoroCount = prevPomodoroCount + 1;
@@ -41,17 +43,6 @@ export const usePomodoroTimer = (
         setMode('focus');
         setTimeLeft(focusDuration * 60);
       }
-
-      //   if (pomodoroCount % longBreakInterval === 0 && pomodoroCount !== 0) {
-      //     setMode('longBreak');
-      //     setTimeLeft(longBreakDuration * 60);
-      //   } else if (mode === 'focus') {
-      //     setMode('shortBreak');
-      //     setTimeLeft(shortBreakDuration * 60);
-      //   } else {
-      //     setMode('focus');
-      //     setTimeLeft(focusDuration * 60);
-      //   }
     }
 
     return () => clearInterval(intervalId);
