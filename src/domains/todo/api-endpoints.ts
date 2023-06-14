@@ -36,3 +36,20 @@ export const createTodo = async (todo: TodoFormType) => {
 
   return data;
 };
+
+export const finishedTodo = async (id: number) => {
+  const { error } = await supabaseClient
+    .from('todos')
+    .update({ finishedAt: new Date().toISOString() })
+    .eq('id', id);
+
+  if (error) {
+    console.log(error);
+
+    throw error;
+  }
+
+  const { data: todoData } = await supabaseClient.from('todos').select('*').eq('id', id);
+
+  return todoData;
+};

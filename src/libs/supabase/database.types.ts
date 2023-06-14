@@ -31,6 +31,7 @@ export interface Database {
       todos: {
         Row: {
           createdAt: string | null;
+          deletedAt: string | null;
           description: string | null;
           finishedAt: string | null;
           id: number;
@@ -39,6 +40,7 @@ export interface Database {
         };
         Insert: {
           createdAt?: string | null;
+          deletedAt?: string | null;
           description?: string | null;
           finishedAt?: string | null;
           id?: number;
@@ -47,6 +49,7 @@ export interface Database {
         };
         Update: {
           createdAt?: string | null;
+          deletedAt?: string | null;
           description?: string | null;
           finishedAt?: string | null;
           id?: number;

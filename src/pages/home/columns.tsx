@@ -1,25 +1,31 @@
 import type { ColumnDef } from '@tanstack/react-table';
-// import //  MoreHorizontal,
-// // Trash,
-// 'lucide-react';
 
-// import { Button } from '@/components/base';
-// import {
-//   DropdownMenu,
-//   DropdownMenuContent,
-//   DropdownMenuItem,
-//   DropdownMenuLabel,
-//   DropdownMenuSeparator,
-//   DropdownMenuTrigger,
-// } from '@/components/dropdown-menu';
+// import Checkbox from '@/components/form/checkbox';
 
-type Todo = {
-  id: number;
-  title: string;
-  description: string | null;
-};
+import TodoDropdown from './TodoDropdown';
+import type { Todo } from './types';
 
 const columns: ColumnDef<Todo>[] = [
+  // {
+  //   id: 'select',
+  //   header: ({ table }) => (
+  //     <Checkbox
+  //       checked={table.getIsAllPageRowsSelected()}
+  //       onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+  //       aria-label='Select all'
+  //     />
+  //   ),
+  //   cell: ({ row }) => (
+  //     <Checkbox
+  //       checked={row.getIsSelected()}
+  //       onCheckedChange={(value) => row.toggleSelected(!!value)}
+  //       aria-label='Select row'
+  //     />
+  //   ),
+  //   enableSorting: false,
+  //   enableHiding: false,
+  // },
+
   {
     header: 'Title',
     accessorKey: 'title',
@@ -28,40 +34,14 @@ const columns: ColumnDef<Todo>[] = [
     header: 'Description',
     accessorKey: 'description',
   },
-  // {
-  //   id: 'actions',
-  //   cell: ({ row }) => {
-  //     const todo = row.original;
+  {
+    id: 'actions',
+    cell: ({ row }) => {
+      const todo = row.original;
 
-  //     return (
-  //       <Button
-  //         variant='ghost'
-  //         onClick={() => {
-  //           console.log('delete', todo.id);
-  //         }}
-  //       >
-  //         <Trash className='h-4 w-4 text-red-500' />
-  //       </Button>
-  //     );
-
-  //     // return (
-  //     //   <DropdownMenu>
-  //     //     <DropdownMenuTrigger asChild>
-  //     //       <Button variant='ghost' className='h-8 w-8 p-0'>
-  //     //         <span className='sr-only'>Open menu</span>
-  //     //         <MoreHorizontal className='h-4 w-4' />
-  //     //       </Button>
-  //     //     </DropdownMenuTrigger>
-  //     //     <DropdownMenuContent align='end'>
-  //     //       <DropdownMenuLabel className='select-none'>Actions</DropdownMenuLabel>
-  //     //       <DropdownMenuSeparator />
-  //     //       <DropdownMenuItem>Edit todo</DropdownMenuItem>
-  //     //       <DropdownMenuItem>Delete</DropdownMenuItem>
-  //     //     </DropdownMenuContent>
-  //     //   </DropdownMenu>
-  //     // );
-  // },
-  // },
+      return <TodoDropdown todo={todo} />;
+    },
+  },
 ];
 
 export { columns };

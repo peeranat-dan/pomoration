@@ -17,6 +17,7 @@ const Home = () => {
     queryFn: () => {
       return findTodosByUserId(user?.id);
     },
+    enabled: !!user?.id,
   });
   const [isOpen, { open, toggle }] = useDisclosure(false);
 
