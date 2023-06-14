@@ -44,8 +44,6 @@ export const finishedTodo = async (id: number) => {
     .eq('id', id);
 
   if (error) {
-    console.log(error);
-
     throw error;
   }
 
