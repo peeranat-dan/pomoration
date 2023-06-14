@@ -6,6 +6,7 @@ import { Button } from '@/components/base';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/dialog';
 import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/form';
 import Input from '@/components/form/input';
+import Textarea from '@/components/form/textarea';
 import { createTodo } from '@/domains/todo/api-endpoints';
 import { TodoFormSchema } from '@/types/todo';
 import type { TodoFormType } from '@/types/todo';
@@ -30,6 +31,11 @@ const AddTodoModal = ({ open, onOpenChange, onFinishAddTodo }: AddTodoModalProps
     await mutateAsync(data);
     form.reset();
     await onFinishAddTodo();
+    onOpenChange(false);
+  };
+
+  const onDialogClose = () => {
+    form.reset();
     onOpenChange(false);
   };
 
@@ -66,8 +72,7 @@ const AddTodoModal = ({ open, onOpenChange, onFinishAddTodo }: AddTodoModalProps
                 <FormItem>
                   <FormLabel>Description</FormLabel>
                   <FormControl>
-                    <Input
-                      type='text'
+                    <Textarea
                       id='description'
                       placeholder='Description'
                       autoComplete='description'
@@ -77,9 +82,19 @@ const AddTodoModal = ({ open, onOpenChange, onFinishAddTodo }: AddTodoModalProps
                 </FormItem>
               )}
             />
-            <Button disabled={isLoading} type='submit' className='w-full'>
-              Add
-            </Button>
+            <div className='flex flex-col gap-2 md:flex-row-reverse'>
+              <Button disabled={isLoading} type='submit' className='w-full md:w-1/2'>
+                Add
+              </Button>
+              <Button
+                disabled={isLoading}
+                onClick={onDialogClose}
+                variant='outline'
+                className='w-full md:w-1/2'
+              >
+                Cancel
+              </Button>
+            </div>
           </form>
         </Form>
       </DialogContent>

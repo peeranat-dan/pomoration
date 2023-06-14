@@ -10,7 +10,8 @@ export const findTodosByUserId = async (userId: string | undefined) => {
     .from('todos')
     .select('*')
     .eq('user_id', userId)
-    .filter('finishedAt', 'is', null);
+    .filter('finishedAt', 'is', null)
+    .order('createdAt', { ascending: false });
 
   if (error) {
     throw error;

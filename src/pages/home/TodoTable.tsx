@@ -46,7 +46,7 @@ const TodoTable = <TData, TValue>({ columns, data }: DataTableProps<TData, TValu
           ) : (
             <TableRow>
               <TableCell colSpan={columns.length} className='h-24 text-center text-primary'>
-                No results.
+                No todos.
               </TableCell>
             </TableRow>
           )}

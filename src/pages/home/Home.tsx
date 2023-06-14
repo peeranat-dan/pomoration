@@ -19,6 +19,7 @@ const Home = () => {
     },
   });
   const [isOpen, { open, toggle }] = useDisclosure(false);
+
   const handleRefetch = async () => {
     await refetch();
   };
@@ -30,7 +31,7 @@ const Home = () => {
       {user ? (
         <div className='space-y-4'>
           <hr />
-          <div className='flex items-center gap-2'>
+          <div className='flex items-center gap-4'>
             <h2 className='text-2xl font-semibold'>Todos</h2>
             <Button size='sm' variant='outline' onClick={open}>
               Add Todo
