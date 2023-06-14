@@ -38,7 +38,7 @@ const PomodoroTimer = () => {
           <div className='text-lg'>{VARIANTS_TITLE[mode]}</div>
         </div>
         {isRunning ? (
-          <Button color='red' className='w-full' onClick={pauseTimer}>
+          <Button variant='destructive' className='w-full' onClick={pauseTimer}>
             Pause
           </Button>
         ) : (

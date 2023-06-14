@@ -2,22 +2,17 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { Settings, X } from 'lucide-react';
 
 import { Button } from '@/components/base';
-import { useThemeContext } from '@/providers/ThemeProvider';
 import { cn } from '@/utils/classnames';
 
 import ThemeToggle from '../theme-toggle/ThemeToggle';
 
 const SettingButton = () => {
-  const { theme } = useThemeContext();
-
-  const isDark = theme === 'dark';
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
         <button
           className={cn(
             'rounded-full p-2 duration-200 hover:bg-gray-100 hover:text-primary/90 dark:hover:bg-primary/50 dark:hover:text-primary',
-            isDark ? 'text-white' : 'text-black',
           )}
         >
           <Settings className='h-6 w-6' />
@@ -25,8 +20,8 @@ const SettingButton = () => {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className='fixed inset-0 bg-black/30 data-[state=open]:animate-overlayShow dark:bg-gray-600/30' />
-        <Dialog.Content className='fixed left-[50%] top-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] space-y-4 rounded-[6px] bg-background p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none data-[state=open]:animate-contentShow dark:bg-background/80'>
-          <Dialog.Title className='text-[20px] font-medium text-black'>Setting</Dialog.Title>
+        <Dialog.Content className='fixed left-[50%] top-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] space-y-4 rounded-[6px] bg-background p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none data-[state=open]:animate-contentShow dark:bg-background'>
+          <Dialog.Title className='text-[20px] font-medium'>Setting</Dialog.Title>
           <ThemeToggle mode='switch' />
           <div className='flex justify-end'>
             <Dialog.Close asChild>

@@ -11,6 +11,13 @@ export default {
       mono: ['Azeret Mono', 'monospace'],
     },
     extend: {
+      container: {
+        center: true,
+        padding: '2rem',
+        screens: {
+          '2xl': '1400px',
+        },
+      },
       colors: {
         // Light
         'bg-light': '#fff',

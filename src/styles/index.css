@@ -5,13 +5,6 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    -webkit-tap-highlight-color: transparent;
-    -moz-tap-highlight-color: transparent;
-    -o-tap-highlight-color: transparent;
-    tap-highlight-color: transparent;
-  }
-
   input[type='number']::-webkit-inner-spin-button,
   input[type='number']::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -20,34 +13,6 @@
 
   li {
     @apply list-none;
-  }
-
-  h1 {
-    @apply text-4xl font-semibold text-bg-dark dark:text-bg-light;
-  }
-
-  h2 {
-    @apply text-3xl font-medium text-bg-dark dark:text-bg-light;
-  }
-
-  h3 {
-    @apply text-2xl font-medium text-bg-dark dark:text-bg-light;
-  }
-
-  h4 {
-    @apply text-xl font-medium text-bg-dark dark:text-bg-light;
-  }
-
-  h5 {
-    @apply text-lg font-bold text-bg-dark dark:text-bg-light;
-  }
-
-  h6 {
-    @apply text-base font-bold text-bg-dark dark:text-bg-light;
-  }
-
-  p {
-    @apply text-base text-bg-dark dark:text-bg-light;
   }
 
   :root {
@@ -114,5 +79,15 @@
     --ring: 216 34% 17%;
 
     --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
   }
 }

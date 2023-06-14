@@ -19,6 +19,14 @@ export interface Database {
           id?: string;
           imgurl?: string | null;
         };
+        Relationships: [
+          {
+            foreignKeyName: 'profiles_id_fkey';
+            columns: ['id'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
+          },
+        ];
       };
       todos: {
         Row: {
@@ -26,7 +34,7 @@ export interface Database {
           description: string | null;
           finishedAt: string | null;
           id: number;
-          title: string | null;
+          title: string;
           user_id: string;
         };
         Insert: {
@@ -34,7 +42,7 @@ export interface Database {
           description?: string | null;
           finishedAt?: string | null;
           id?: number;
-          title?: string | null;
+          title?: string;
           user_id: string;
         };
         Update: {
@@ -42,9 +50,10 @@ export interface Database {
           description?: string | null;
           finishedAt?: string | null;
           id?: number;
-          title?: string | null;
+          title?: string;
           user_id?: string;
         };
+        Relationships: [];
       };
     };
     Views: {
