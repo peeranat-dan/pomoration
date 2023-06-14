@@ -3,19 +3,19 @@ import { AlertCircle } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/base';
-import Form from '@/components/form';
-import Label from '@/components/form/label';
+import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/form';
+import Input from '@/components/form/input';
 import { useAuthContext } from '@/providers/auth/AuthProvider';
 import type { LoginFormType } from '@/types/auth';
 import { LoginFormSchema } from '@/types/auth';
 
 const LoginForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginFormType>({
+  const form = useForm<LoginFormType>({
     resolver: zodResolver(LoginFormSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
   });
   const { login, authError, loading } = useAuthContext();
 
@@ -31,35 +31,49 @@ const LoginForm = () => {
           <span>{authError}</span>
         </div>
       ) : null}
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='flex flex-col gap-4'>
-          <div className='flex flex-col gap-2'>
-            <Label htmlFor='email'>Email</Label>
-            <Form.Input
-              type='email'
-              id='email'
-              placeholder='Email'
-              autoComplete='email'
-              {...register('email')}
-              error={errors.email?.message}
-            />
-          </div>
-          <div className='flex flex-col gap-2'>
-            <Label htmlFor='password'>Password</Label>
-            <Form.Input
-              type='password'
-              id='password'
-              placeholder='Password'
-              autoComplete='current-password'
-              {...register('password')}
-              error={errors.password?.message}
-            />
-          </div>
-          <Button disabled={loading} type='submit' className='mt-4'>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
+          <FormField
+            control={form.control}
+            name='email'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input
+                    type='email'
+                    id='email'
+                    placeholder='Email'
+                    autoComplete='email'
+                    {...field}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name='password'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input
+                    type='password'
+                    id='password'
+                    placeholder='Password'
+                    autoComplete='current-password'
+                    {...field}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <Button disabled={loading} type='submit' className='w-full'>
             Login
           </Button>
-        </div>
-      </form>
+        </form>
+      </Form>
     </>
   );
 };
