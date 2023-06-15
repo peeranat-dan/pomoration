@@ -41,9 +41,16 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   useEffect(() => {
-    auth.getSession().then(({ data: { session } }) => {
-      getUserValue(session);
-    });
+    auth
+      .getSession()
+      .then(({ data: { session } }) => {
+        getUserValue(session);
+      })
+      .catch(() => {
+        setAuthState(AUTH_STATE.NOT_LOGGED_IN);
+        setUser(null);
+        setLoading(false);
+      });
 
     const {
       data: { subscription },
