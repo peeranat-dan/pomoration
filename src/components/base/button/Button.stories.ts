@@ -14,7 +14,7 @@ type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
   args: {
-    variant: 'primary',
+    variant: 'default',
     children: 'Button',
   },
 };
@@ -28,14 +28,7 @@ export const Secondary: Story = {
 
 export const Outlined: Story = {
   args: {
-    variant: 'outlined',
-    children: 'Button',
-  },
-};
-
-export const Text: Story = {
-  args: {
-    variant: 'text',
+    variant: 'outline',
     children: 'Button',
   },
 };
