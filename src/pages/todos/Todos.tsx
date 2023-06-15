@@ -17,7 +17,7 @@ const Todos = () => {
     enabled: !!user?.id,
   });
   return (
-    <div className='mx-auto max-w-3xl space-y-4 px-4 sm:px-0'>
+    <div className='mx-auto max-w-2xl space-y-4 px-4 py-2 sm:px-0 sm:py-4'>
       <h1 className='text-xl font-semibold'>Todos</h1>
       <TodoTable columns={columns} data={data ?? []} />
     </div>

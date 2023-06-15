@@ -42,7 +42,7 @@ const Setting = () => {
   };
 
   return (
-    <div className='mx-auto max-w-xl space-y-4 px-4 sm:px-0'>
+    <div className='mx-auto max-w-xl space-y-4 px-4 py-2 sm:px-0 sm:py-4'>
       <h1 className='text-2xl font-semibold'>Settings</h1>
       {user ? (
         <>

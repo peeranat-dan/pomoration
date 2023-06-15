@@ -59,7 +59,7 @@ const UserAvatarMenu = () => {
           </DropdownMenu.Item>
           <DropdownMenu.Item
             onClick={handleLogout}
-            className='group relative flex cursor-pointer gap-2 rounded-md px-4 py-2 outline-none duration-150 hover:bg-red-500 dark:hover:bg-red-700 dark:hover:text-white'
+            className='group relative flex cursor-pointer gap-2 rounded-md px-4 py-2 outline-none duration-150 hover:bg-red-500 hover:text-white dark:hover:bg-red-700'
           >
             <LogOut className='h-5 w-5' />
             <span className='text-sm'>Logout</span>
