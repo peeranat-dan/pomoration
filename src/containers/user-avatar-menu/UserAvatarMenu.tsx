@@ -30,7 +30,7 @@ const UserAvatarMenu = () => {
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content
-          className='mr-2 mt-2 select-none rounded-md border bg-white p-1 dark:border-gray-500 dark:bg-bg-dark md:mr-0'
+          className='mr-2 mt-2 select-none rounded-md border p-1 dark:border-gray-500  md:mr-0'
           sideOffset={5}
         >
           <div className='group px-4 py-2'>
@@ -47,7 +47,7 @@ const UserAvatarMenu = () => {
           </DropdownMenu.Item> */}
           <DropdownMenu.Item
             onClick={handleLogout}
-            className='group relative flex cursor-pointer gap-2 rounded-md px-4 py-2 text-gray-700 outline-none duration-150 hover:bg-red-500 hover:text-white dark:text-white'
+            className='group relative flex cursor-pointer gap-2 rounded-md px-4 py-2 text-gray-700 outline-none duration-150 hover:bg-red-500 hover:text-white dark:text-white dark:hover:bg-red-700'
           >
             <LogOut className='h-5 w-5' />
             <span className='text-sm'>Logout</span>
