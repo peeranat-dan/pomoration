@@ -23,10 +23,13 @@ export const upsertConfig = async (config: PomodoroFormType) => {
     throw new Error('User ID is required');
   }
 
-  const { error } = await supabaseClient.from('pomodoroConfig').upsert({
-    ...config,
-    user_id: user.id,
-  });
+  const { error } = await supabaseClient.from('pomodoroConfig').upsert(
+    {
+      ...config,
+      user_id: user.id,
+    },
+    { onConflict: 'user_id' },
+  );
 
   if (error) {
     throw error;

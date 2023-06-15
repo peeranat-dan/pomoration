@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { Button } from '@/components/base';
 import Timer from '@/components/timer';
-import type { PomodoroMode } from '@/types/pomodoro';
+import type { PomodoroConfig, PomodoroMode } from '@/types/pomodoro';
 import { cn } from '@/utils/classnames';
 import { env } from '@/utils/config';
 import { toMMSS } from '@/utils/formatTime';
@@ -20,8 +20,16 @@ const VARIANTS_TITLE: Record<PomodoroMode, string> = {
   longBreak: 'Long Break',
 } as const;
 
-const PomodoroTimer = () => {
-  const { timeLeft, isRunning, mode, startTimer, pauseTimer } = usePomodoroTimer();
+type PomodoroTimerProps = {
+  config: Omit<PomodoroConfig, 'id' | 'user_id'> | undefined;
+};
+
+const PomodoroTimer = ({ config }: PomodoroTimerProps) => {
+  const { timeLeft, isRunning, mode, startTimer, pauseTimer } = usePomodoroTimer(
+    config?.focus,
+    config?.shortBreak,
+    config?.longBreak,
+  );
   useEffect(() => {
     document.title = `${toMMSS(timeLeft)} - ${VARIANTS_TITLE[mode]} | ${env.appName}`;
   }, [timeLeft, mode]);

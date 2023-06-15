@@ -1,24 +1,25 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { Button } from '@/components/base';
-import PomodoroTimer from '@/containers/pomodoro-timer';
 import { findActiveTodosByUserId } from '@/domains/todo/api-endpoints';
 import { useAuthContext } from '@/providers/auth/AuthProvider';
 import { useDisclosure } from '@/utils/useDisclosure';
 
 import AddTodoModal from './AddTodoModal';
 import { columns } from './columns';
+import PomodoroTimerContainer from './PomdoroTimerContainer';
 import TodoTable from './TodoTable';
 
 const Home = () => {
   const { user } = useAuthContext();
-  const { data, refetch } = useQuery({
+  const { data: todoData, refetch } = useQuery({
     queryKey: ['todos', user?.id],
     queryFn: () => {
       return findActiveTodosByUserId(user?.id);
     },
     enabled: !!user?.id,
   });
+
   const [isOpen, { open, toggle }] = useDisclosure(false);
 
   const handleRefetch = async () => {
@@ -28,7 +29,7 @@ const Home = () => {
   return (
     <div className='mx-auto max-w-xl px-4 sm:px-0'>
       <AddTodoModal open={isOpen} onOpenChange={toggle} onFinishAddTodo={handleRefetch} />
-      <PomodoroTimer />
+      <PomodoroTimerContainer />
       {user ? (
         <div className='space-y-4'>
           <hr />
@@ -38,7 +39,7 @@ const Home = () => {
               Add Todo
             </Button>
           </div>
-          <TodoTable columns={columns} data={data ?? []} />
+          <TodoTable columns={columns} data={todoData ?? []} />
         </div>
       ) : null}
     </div>

@@ -10,6 +10,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/
 import Input from '@/components/form/input/Input';
 import { findConfigByUserId, upsertConfig } from '@/domains/config/api-endpoints';
 import type { UserData } from '@/providers/auth/types';
+import { queryClient } from '@/providers/QueryProvider';
 import type { PomodoroFormType } from '@/types/pomodoro';
 import { PomodoroFormSchema } from '@/types/pomodoro';
 import { useToast } from '@/utils/useToast';
@@ -22,6 +23,8 @@ const ConfigForm = ({ user }: { user: UserData }) => {
     queryFn: () => {
       return findConfigByUserId(user.id);
     },
+    enabled: !!user.id,
+    refetchOnWindowFocus: false,
   });
 
   const form = useForm<PomodoroFormType>({
@@ -44,6 +47,7 @@ const ConfigForm = ({ user }: { user: UserData }) => {
       toast({
         description: 'Your config has been updated.',
       });
+      return queryClient.refetchQueries(['pomodoro-settings', user.id]);
     },
     onError: () => {
       toast({

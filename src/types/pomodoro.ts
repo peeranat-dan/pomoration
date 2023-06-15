@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+import type { Database } from '@/libs/supabase/database.types';
+
 const convertToInt = (value: string | number) => parseInt(value.toString(), 10);
 
 const PomodoroFormSchema = z.object({
@@ -10,6 +12,7 @@ const PomodoroFormSchema = z.object({
 
 type PomodoroMode = 'focus' | 'shortBreak' | 'longBreak';
 type PomodoroFormType = z.infer<typeof PomodoroFormSchema>;
+type PomodoroConfig = Database['public']['Tables']['pomodoroConfig']['Row'];
 
 export { PomodoroFormSchema };
-export type { PomodoroMode, PomodoroFormType };
+export type { PomodoroConfig, PomodoroMode, PomodoroFormType };
