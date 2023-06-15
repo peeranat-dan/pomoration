@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { MoreHorizontal } from 'lucide-react';
+import { Check, MoreHorizontal, Trash } from 'lucide-react';
 
 import { Button } from '@/components/base';
 import {
@@ -59,10 +59,18 @@ const TodoDropdown = ({ todo }: TodoDropdownProps) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent align='end'>
           <DropdownMenuLabel className='select-none'>Actions</DropdownMenuLabel>
-          <DropdownMenuItem onClick={() => finishTodo(todo.id)}>Finish todo</DropdownMenuItem>
+          <DropdownMenuItem className='items-center gap-2' onClick={() => finishTodo(todo.id)}>
+            <Check className='h-4 w-4' />
+            Finish todo
+          </DropdownMenuItem>
           <DropdownMenuSeparator />
           {/* <DropdownMenuItem>Edit todo</DropdownMenuItem> */}
-          <DropdownMenuItem onClick={open}>Delete</DropdownMenuItem>
+          <DropdownMenuItem
+            className='items-center gap-2 text-red-500 hover:text-red-600'
+            onClick={open}
+          >
+            <Trash className='h-4 w-4' /> Delete
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </>
