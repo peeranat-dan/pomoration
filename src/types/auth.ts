@@ -17,5 +17,10 @@ export const SignupFormSchema = z
     path: ['confirmPassword'],
   });
 
+export const ProfileFormSchema = z.object({
+  displayName: z.string().min(3, { message: 'Display name must be at least 3 characters long.' }),
+});
+
 export type LoginFormType = z.infer<typeof LoginFormSchema>;
 export type SignupFormType = z.infer<typeof SignupFormSchema>;
+export type ProfileFormType = z.infer<typeof ProfileFormSchema>;
