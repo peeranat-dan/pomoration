@@ -11,6 +11,7 @@ export const findTodosByUserId = async (userId: string | undefined) => {
     .select('*')
     .eq('user_id', userId)
     .filter('finishedAt', 'is', null)
+    .filter('deletedAt', 'is', null)
     .order('createdAt', { ascending: false });
 
   if (error) {
@@ -50,4 +51,17 @@ export const finishedTodo = async (id: number) => {
   const { data: todoData } = await supabaseClient.from('todos').select('*').eq('id', id);
 
   return todoData;
+};
+
+export const deleteTodo = async (id: number) => {
+  const { error } = await supabaseClient
+    .from('todos')
+    .update({ deletedAt: new Date().toISOString() })
+    .eq('id', id);
+
+  if (error) {
+    throw error;
+  }
+
+  return true;
 };

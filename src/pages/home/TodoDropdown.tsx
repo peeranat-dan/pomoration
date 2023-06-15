@@ -10,9 +10,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/dropdown-menu';
-import { finishedTodo } from '@/domains/todo/api-endpoints';
+import { deleteTodo, finishedTodo } from '@/domains/todo/api-endpoints';
 import { queryClient } from '@/providers/QueryProvider';
+import { useDisclosure } from '@/utils/useDisclosure';
 
+import DeleteTodoModal from './DeleteTodoModal';
 import type { Todo } from './types';
 
 type TodoDropdownProps = {
@@ -20,6 +22,7 @@ type TodoDropdownProps = {
 };
 
 const TodoDropdown = ({ todo }: TodoDropdownProps) => {
+  const [isOpen, { open, toggle }] = useDisclosure(false);
   const { mutate: finishTodo } = useMutation({
     mutationKey: ['finishedTodo'],
     mutationFn: finishedTodo,
@@ -27,24 +30,42 @@ const TodoDropdown = ({ todo }: TodoDropdownProps) => {
       queryClient.refetchQueries(['todos', todo.user_id]);
     },
   });
+  const { mutate: deleteTodoMutation, isLoading: isDeleting } = useMutation({
+    mutationKey: ['deleteTodo'],
+    mutationFn: deleteTodo,
+    onSuccess: () => {
+      queryClient.refetchQueries(['todos', todo.user_id]);
+    },
+  });
+
+  const onConfirmDelete = async () => {
+    deleteTodoMutation(todo.id);
+  };
+
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant='ghost' className='h-8 w-8 p-0'>
-          <span className='sr-only'>Open menu</span>
-          <MoreHorizontal className='h-4 w-4' />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align='end'>
-        <DropdownMenuLabel className='select-none'>Actions</DropdownMenuLabel>
-        <DropdownMenuItem onClick={async () => await finishTodo(todo.id)}>
-          Finish todo
-        </DropdownMenuItem>
-        {/* <DropdownMenuSeparator />
-            <DropdownMenuItem>Edit todo</DropdownMenuItem>
-            <DropdownMenuItem>Delete</DropdownMenuItem> */}
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <>
+      <DeleteTodoModal
+        open={isOpen}
+        onOpenChange={toggle}
+        onConfirmDelete={onConfirmDelete}
+        isLoading={isDeleting}
+      />
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant='ghost' className='h-8 w-8 p-0'>
+            <span className='sr-only'>Open menu</span>
+            <MoreHorizontal className='h-4 w-4' />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align='end'>
+          <DropdownMenuLabel className='select-none'>Actions</DropdownMenuLabel>
+          <DropdownMenuItem onClick={() => finishTodo(todo.id)}>Finish todo</DropdownMenuItem>
+          <DropdownMenuSeparator />
+          {/* <DropdownMenuItem>Edit todo</DropdownMenuItem> */}
+          <DropdownMenuItem onClick={open}>Delete</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </>
   );
 };
 
