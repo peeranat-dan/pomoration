@@ -1,6 +1,7 @@
 import { Clock } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
+import SettingButton from '@/containers/setting-button';
 import UserAvatarMenu from '@/containers/user-avatar-menu';
 import { useAuthContext } from '@/providers/auth/AuthProvider';
 
@@ -19,6 +20,8 @@ const Header = () => {
         <Clock className='h-6 w-6 stroke-2' />
       </div>
       <div className='flex items-center gap-2'>
+        {/* NOTE: In the future we'll redirect user to setting route */}
+        {isLoggedIn ? null : <SettingButton />}
         {isLoggedIn ? (
           <UserAvatarMenu />
         ) : (
