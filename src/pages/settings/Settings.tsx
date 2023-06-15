@@ -12,6 +12,8 @@ import type { ProfileFormType } from '@/types/auth';
 import { ProfileFormSchema } from '@/types/auth';
 import { useToast } from '@/utils/useToast';
 
+import ConfigForm from './ConfigForm';
+
 const Settings = () => {
   const { user } = useAuthContext();
   const { toast } = useToast();
@@ -33,11 +35,10 @@ const Settings = () => {
     },
   });
 
-  const onSubmit = (data: ProfileFormType) => {
+  const onSubmitUpdateUserForm = (data: ProfileFormType) => {
     if (data.displayName === user?.displayName) {
       return;
     }
-    // await login(data);
     mutate(data);
   };
 
@@ -50,7 +51,7 @@ const Settings = () => {
           <div className='space-y-4'>
             <h4 className='font-medium'>Profile</h4>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
+              <form onSubmit={form.handleSubmit(onSubmitUpdateUserForm)} className='space-y-4'>
                 <FormField
                   control={form.control}
                   name='displayName'
@@ -70,7 +71,7 @@ const Settings = () => {
                   )}
                 />
                 <div className='flex w-full justify-end'>
-                  <Button type='submit' disabled={isLoading}>
+                  <Button type='submit' className='w-full sm:w-1/4' disabled={isLoading}>
                     Save
                   </Button>
                 </div>
@@ -79,6 +80,7 @@ const Settings = () => {
           </div>
         </>
       ) : null}
+      {user ? <ConfigForm user={user} /> : null}
       <>
         <hr />
         <div className='space-y-4'>

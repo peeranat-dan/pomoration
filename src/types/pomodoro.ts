@@ -1,7 +1,15 @@
-import type { defaultPomodoroConfig } from '@/constants/pomodoroConfig';
+import { z } from 'zod';
 
-type PomodoroConfig = typeof defaultPomodoroConfig;
+const convertToInt = (value: string | number) => parseInt(value.toString(), 10);
+
+const PomodoroFormSchema = z.object({
+  focus: z.union([z.string().min(1), z.number()]).transform((value) => convertToInt(value)),
+  shortBreak: z.union([z.string().min(1), z.number()]).transform((value) => convertToInt(value)),
+  longBreak: z.union([z.string().min(1), z.number()]).transform((value) => convertToInt(value)),
+});
+
 type PomodoroMode = 'focus' | 'shortBreak' | 'longBreak';
-type PomodoroVariant = keyof PomodoroConfig;
+type PomodoroFormType = z.infer<typeof PomodoroFormSchema>;
 
-export type { PomodoroConfig, PomodoroMode, PomodoroVariant };
+export { PomodoroFormSchema };
+export type { PomodoroMode, PomodoroFormType };

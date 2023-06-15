@@ -3,6 +3,37 @@ export type Json = string | number | boolean | null | { [key: string]: Json } | 
 export interface Database {
   public: {
     Tables: {
+      pomodoroConfig: {
+        Row: {
+          focus: number;
+          id: number;
+          longBreak: number;
+          shortBreak: number;
+          user_id: string;
+        };
+        Insert: {
+          focus: number;
+          id?: number;
+          longBreak: number;
+          shortBreak: number;
+          user_id: string;
+        };
+        Update: {
+          focus?: number;
+          id?: number;
+          longBreak?: number;
+          shortBreak?: number;
+          user_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'pomodoroConfig_user_id_fkey';
+            columns: ['user_id'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
       profiles: {
         Row: {
           displayname: string | null;
