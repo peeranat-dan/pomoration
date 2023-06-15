@@ -22,8 +22,8 @@ const UserAvatarMenu = () => {
     navigate('/todo');
   };
 
-  const handleSetting = () => {
-    navigate('/setting');
+  const handleSettings = () => {
+    navigate('/settings');
   };
 
   return (
@@ -44,11 +44,11 @@ const UserAvatarMenu = () => {
           </div>
           <DropdownMenu.Separator className='m-[5px] h-[1px] bg-primary/30' />
           <DropdownMenu.Item
-            onClick={handleSetting}
+            onClick={handleSettings}
             className='group relative flex cursor-pointer gap-2 rounded-md px-4 py-2 outline-none duration-150 hover:bg-primary/10'
           >
             <Settings className='h-5 w-5' />
-            <span className='text-sm'>Setting</span>
+            <span className='text-sm'>Settings</span>
           </DropdownMenu.Item>
           <DropdownMenu.Item
             onClick={handleTodo}

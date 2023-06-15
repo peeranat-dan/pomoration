@@ -6,7 +6,7 @@ import Home from './pages/home';
 import Login from './pages/login';
 import NotFound from './pages/not-found';
 // import Profile from './pages/profile';
-import Setting from './pages/setting';
+import Settings from './pages/settings';
 import Signup from './pages/signup';
 import Todos from './pages/todos';
 import Verify from './pages/verify';
@@ -23,7 +23,7 @@ const AppRouter = () => {
         </Route>
         <Route element={<BaseLayout />}>
           <Route index element={<Home />} />
-          <Route path='/setting' element={<Setting />} />
+          <Route path='/settings' element={<Settings />} />
         </Route>
         <Route
           element={

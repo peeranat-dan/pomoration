@@ -21,7 +21,7 @@ const SettingButton = () => {
       <Dialog.Portal>
         <Dialog.Overlay className='fixed inset-0 bg-black/30 data-[state=open]:animate-overlayShow dark:bg-gray-600/30' />
         <Dialog.Content className='fixed left-[50%] top-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] space-y-4 rounded-[6px] bg-background p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none data-[state=open]:animate-contentShow dark:bg-background'>
-          <Dialog.Title className='text-[20px] font-medium'>Setting</Dialog.Title>
+          <Dialog.Title className='text-[20px] font-medium'>Settings</Dialog.Title>
           <ThemeToggle mode='switch' />
           <div className='flex justify-end'>
             <Dialog.Close asChild>

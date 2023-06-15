@@ -12,7 +12,7 @@ import type { ProfileFormType } from '@/types/auth';
 import { ProfileFormSchema } from '@/types/auth';
 import { useToast } from '@/utils/useToast';
 
-const Setting = () => {
+const Settings = () => {
   const { user } = useAuthContext();
   const { toast } = useToast();
 
@@ -90,4 +90,4 @@ const Setting = () => {
   );
 };
 
-export default Setting;
+export default Settings;
