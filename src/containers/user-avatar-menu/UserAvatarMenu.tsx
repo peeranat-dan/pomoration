@@ -1,5 +1,5 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { LogOut } from 'lucide-react';
+import { ListChecks, LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 import Avatar from '@/components/avatar/Avatar';
@@ -17,9 +17,10 @@ const UserAvatarMenu = () => {
     await logout();
     navigate('/login');
   };
-  // const handleProfile = () => {
-  //   navigate('/profile');
-  // };
+
+  const handleTodo = () => {
+    navigate('/todo');
+  };
 
   return (
     <DropdownMenu.Root>
@@ -38,13 +39,13 @@ const UserAvatarMenu = () => {
             <p className='text-sm text-gray-500 dark:text-gray-400'>{user.email}</p>
           </div>
           <DropdownMenu.Separator className='m-[5px] h-[1px] bg-primary/30' />
-          {/* <DropdownMenu.Item
-            onClick={handleProfile}
-            className='group relative flex cursor-pointer gap-2 rounded-md px-4 py-2 text-gray-700 outline-none duration-150 hover:bg-primary-100 hover:text-primary-800 dark:text-white'
+          <DropdownMenu.Item
+            onClick={handleTodo}
+            className='group relative flex cursor-pointer gap-2 rounded-md px-4 py-2 outline-none duration-150 hover:bg-primary/10'
           >
-            <UserCircleIcon className='h-5 w-5' />
-            <span className='text-sm'>Profile</span>
-          </DropdownMenu.Item> */}
+            <ListChecks className='h-5 w-5' />
+            <span className='text-sm'>All Todos</span>
+          </DropdownMenu.Item>
           <DropdownMenu.Item
             onClick={handleLogout}
             className='group relative flex cursor-pointer gap-2 rounded-md px-4 py-2 text-gray-700 outline-none duration-150 hover:bg-red-500 hover:text-white dark:text-white dark:hover:bg-red-700'

@@ -7,6 +7,7 @@ import Login from './pages/login';
 import NotFound from './pages/not-found';
 // import Profile from './pages/profile';
 import Signup from './pages/signup';
+import Todos from './pages/todos';
 import Verify from './pages/verify';
 import AdminAuthGuard from './providers/auth/AuthGuard';
 
@@ -29,6 +30,7 @@ const AppRouter = () => {
             </AdminAuthGuard>
           }
         >
+          <Route path='/todo' element={<Todos />} />
           {/* <Route path='/profile' element={<Profile />} /> */}
         </Route>
         <Route

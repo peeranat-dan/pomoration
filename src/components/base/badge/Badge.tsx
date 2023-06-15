@@ -1,46 +1,33 @@
+import { cva, type VariantProps } from 'class-variance-authority';
+
 import { cn } from '@/utils/classnames';
 
-const ROUNDED_STYLES = {
-  pill: 'rounded-[999px]',
-  default: 'rounded-sm',
-};
+export const badgeVariants = cva(
+  'inline-flex items-center border rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
+  {
+    variants: {
+      variant: {
+        default: 'bg-primary hover:bg-primary/80 border-transparent text-primary-foreground',
+        secondary:
+          'bg-secondary hover:bg-secondary/80 border-transparent text-secondary-foreground',
+        destructive:
+          'bg-destructive hover:bg-destructive/80 border-transparent text-destructive-foreground',
+        outline: 'text-foreground',
+        success: 'bg-success hover:bg-success/80 border-transparent text-success-foreground',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  },
+);
 
-const COLOR_STYLES = {
-  primary: 'bg-primary text-white',
-  secondary: 'bg-neutral-500 text-white',
-  'outlined-primary': 'bg-transparent border border-primary text-primary',
-  'outlined-secondary': 'bg-transparent border border-neutral-500 text-neutral-500',
-};
+export interface BadgeProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof badgeVariants> {}
 
-export type BadgeVariant = keyof typeof ROUNDED_STYLES;
-export type BadgeColor = keyof typeof COLOR_STYLES;
-
-export interface BadgeProps extends React.ComponentProps<'div'> {
-  children: React.ReactNode;
-  rounded?: BadgeVariant;
-  color?: BadgeColor;
-}
-
-const Badge = ({
-  children,
-  rounded = 'pill',
-  color = 'primary',
-  className,
-  ...props
-}: BadgeProps) => {
-  return (
-    <div
-      className={cn(
-        'w-fit select-none px-2 py-1 text-sm font-semibold',
-        ROUNDED_STYLES[rounded],
-        COLOR_STYLES[color],
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </div>
-  );
+const Badge = ({ className, variant, ...props }: BadgeProps) => {
+  return <div className={cn(badgeVariants({ variant }), className)} {...props} />;
 };
 
 export default Badge;

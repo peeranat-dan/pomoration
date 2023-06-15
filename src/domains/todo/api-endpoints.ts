@@ -1,7 +1,7 @@
 import { supabaseClient } from '@/libs/supabase/initialize';
 import type { TodoFormType } from '@/types/todo';
 
-export const findTodosByUserId = async (userId: string | undefined) => {
+export const findActiveTodosByUserId = async (userId: string | undefined) => {
   if (!userId) {
     throw new Error('User ID is required');
   }
@@ -12,6 +12,31 @@ export const findTodosByUserId = async (userId: string | undefined) => {
     .eq('user_id', userId)
     .filter('finishedAt', 'is', null)
     .filter('deletedAt', 'is', null)
+    .order('createdAt', { ascending: false });
+
+  if (error) {
+    throw error;
+  }
+
+  return data;
+};
+
+export const findAllTodosByUserId = async (
+  userId: string | undefined,
+  //   page: number,
+  //   pageSize = 10,
+) => {
+  if (!userId) {
+    throw new Error('User ID is required');
+  }
+
+  //   const [startRange, endRange] = [(page - 1) * pageSize, page * pageSize];
+
+  const { data, error } = await supabaseClient
+    .from('todos')
+    .select('*')
+    .eq('user_id', userId)
+    // .range(startRange, endRange)
     .order('createdAt', { ascending: false });
 
   if (error) {

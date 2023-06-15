@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import { Button } from '@/components/base';
 import PomodoroTimer from '@/containers/pomodoro-timer';
-import { findTodosByUserId } from '@/domains/todo/api-endpoints';
+import { findActiveTodosByUserId } from '@/domains/todo/api-endpoints';
 import { useAuthContext } from '@/providers/auth/AuthProvider';
 import { useDisclosure } from '@/utils/useDisclosure';
 
@@ -15,7 +15,7 @@ const Home = () => {
   const { data, refetch } = useQuery({
     queryKey: ['todos', user?.id],
     queryFn: () => {
-      return findTodosByUserId(user?.id);
+      return findActiveTodosByUserId(user?.id);
     },
     enabled: !!user?.id,
   });

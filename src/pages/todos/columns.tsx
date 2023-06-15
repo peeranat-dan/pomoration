@@ -1,6 +1,6 @@
 import type { ColumnDef } from '@tanstack/react-table';
 
-import TodoDropdown from './TodoDropdown';
+import TodoBadge from './TodoBadge';
 import type { Todo } from './types';
 
 const columns: ColumnDef<Todo>[] = [
@@ -12,12 +12,21 @@ const columns: ColumnDef<Todo>[] = [
     header: 'Description',
     accessorKey: 'description',
   },
+  //   {
+  //     id: 'actions',
+  //     cell: ({ row }) => {
+  //       const todo = row.original;
+
+  //       //   return <TodoDropdown todo={todo} />;
+  //       return <></>;
+  //     },
+  //   },
   {
-    id: 'actions',
+    id: 'status',
     cell: ({ row }) => {
       const todo = row.original;
 
-      return <TodoDropdown todo={todo} />;
+      return <TodoBadge deletedAt={todo.deletedAt} finishedAt={todo.finishedAt} />;
     },
   },
 ];
