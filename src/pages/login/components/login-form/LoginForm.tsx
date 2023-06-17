@@ -43,7 +43,7 @@ const LoginForm = () => {
                   <Input
                     type='email'
                     id='email'
-                    placeholder='Email'
+                    placeholder='Enter your email'
                     autoComplete='email'
                     {...field}
                   />
@@ -61,7 +61,7 @@ const LoginForm = () => {
                   <Input
                     type='password'
                     id='password'
-                    placeholder='Password'
+                    placeholder='Enter your password'
                     autoComplete='current-password'
                     {...field}
                   />

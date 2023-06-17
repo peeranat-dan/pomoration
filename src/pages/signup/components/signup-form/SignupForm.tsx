@@ -66,7 +66,7 @@ const SignupForm = ({ onSignup }: SignupFormProps) => {
                   <Input
                     type='email'
                     id='email'
-                    placeholder='Email'
+                    placeholder="What's your email?"
                     autoComplete='email'
                     {...field}
                   />
@@ -84,7 +84,7 @@ const SignupForm = ({ onSignup }: SignupFormProps) => {
                   <Input
                     type='password'
                     id='password'
-                    placeholder='Password'
+                    placeholder='At least 8 characters'
                     autoComplete='current-password'
                     {...field}
                   />
@@ -101,9 +101,9 @@ const SignupForm = ({ onSignup }: SignupFormProps) => {
                 <FormControl>
                   <Input
                     type='password'
-                    id='password'
-                    placeholder='Password'
-                    autoComplete='new-password'
+                    id='confirm-password'
+                    placeholder='Confirm your password'
+                    autoComplete='confirm-password'
                     {...field}
                   />
                 </FormControl>

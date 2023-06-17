@@ -4,7 +4,7 @@ import type { PomodoroFormType } from '@/types/pomodoro';
 export const findConfigByUserId = async (userId: string | undefined) => {
   const { data, error } = await supabaseClient
     .from('pomodoroConfig')
-    .select()
+    .select('focus, shortBreak, longBreak')
     .eq('user_id', userId);
 
   if (error) {
