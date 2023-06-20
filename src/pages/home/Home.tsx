@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { useQuery } from '@tanstack/react-query';
 
 import { Button } from '@/components/base';
@@ -5,19 +7,25 @@ import { findActiveTodosByUserId } from '@/domains/todo/api-endpoints';
 import { useAuthContext } from '@/providers/auth/AuthProvider';
 import { useDisclosure } from '@/utils/useDisclosure';
 
+import type { Todo } from '../todos/types';
+
 import AddTodoModal from './AddTodoModal';
-import { columns } from './columns';
 import PomodoroTimerContainer from './PomdoroTimerContainer';
-import TodoTable from './TodoTable';
+import TodoList from './TodoList';
 
 const Home = () => {
   const { user } = useAuthContext();
-  const { data: todoData, refetch } = useQuery({
+  const [todos, setTodos] = useState<Todo[]>([]);
+  const { refetch } = useQuery({
     queryKey: ['todos', user?.id],
     queryFn: () => {
       return findActiveTodosByUserId(user?.id);
     },
     enabled: !!user?.id,
+    refetchOnWindowFocus: false,
+    onSuccess: (data) => {
+      setTodos(data);
+    },
   });
 
   const [isOpen, { open, toggle }] = useDisclosure(false);
@@ -39,7 +47,7 @@ const Home = () => {
               Add Todo
             </Button>
           </div>
-          <TodoTable columns={columns} data={todoData ?? []} />
+          <TodoList todos={todos} setTodos={setTodos} />
         </div>
       ) : null}
     </div>
