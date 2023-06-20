@@ -17,7 +17,7 @@ const TodoList = ({ todos, setTodos }: TodoListProps) => {
         <Reorder.Item
           key={todo.id}
           value={todo}
-          className='flex cursor-pointer select-none items-center justify-between gap-4 rounded-lg border bg-white p-2'
+          className='flex cursor-pointer select-none items-center justify-between gap-4 rounded-lg border bg-background p-2'
         >
           <div className='flex items-center gap-2'>
             <div className='flex-shrink-0'>
