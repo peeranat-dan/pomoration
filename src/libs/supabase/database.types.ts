@@ -61,30 +61,33 @@ export interface Database {
       };
       todos: {
         Row: {
-          createdAt: string | null;
+          createdAt: string;
           deletedAt: string | null;
           description: string | null;
           finishedAt: string | null;
           id: number;
           title: string;
+          updatedAt: string;
           user_id: string;
         };
         Insert: {
-          createdAt?: string | null;
+          createdAt?: string;
           deletedAt?: string | null;
           description?: string | null;
           finishedAt?: string | null;
           id?: number;
           title?: string;
+          updatedAt?: string;
           user_id: string;
         };
         Update: {
-          createdAt?: string | null;
+          createdAt?: string;
           deletedAt?: string | null;
           description?: string | null;
           finishedAt?: string | null;
           id?: number;
           title?: string;
+          updatedAt?: string;
           user_id?: string;
         };
         Relationships: [];
