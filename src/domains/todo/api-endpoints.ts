@@ -64,9 +64,10 @@ export const createTodo = async (todo: TodoFormType) => {
 };
 
 export const finishedTodo = async (id: number) => {
+  const now = new Date().toISOString();
   const { error } = await supabaseClient
     .from('todos')
-    .update({ finishedAt: new Date().toISOString() })
+    .update({ finishedAt: now, updatedAt: now })
     .eq('id', id);
 
   if (error) {
@@ -79,9 +80,10 @@ export const finishedTodo = async (id: number) => {
 };
 
 export const deleteTodo = async (id: number) => {
+  const now = new Date().toISOString();
   const { error } = await supabaseClient
     .from('todos')
-    .update({ deletedAt: new Date().toISOString() })
+    .update({ deletedAt: now, updatedAt: now })
     .eq('id', id);
 
   if (error) {
