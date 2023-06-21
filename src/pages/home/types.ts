@@ -1,4 +1,4 @@
-export type Todo = {
+export type TodoCardItem = {
   id: number;
   title: string;
   description: string | null;
