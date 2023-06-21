@@ -15,10 +15,10 @@ import { queryClient } from '@/providers/QueryProvider';
 import { useDisclosure } from '@/utils/useDisclosure';
 
 import DeleteTodoModal from './DeleteTodoModal';
-import type { Todo } from './types';
+import type { TodoCardItem } from './types';
 
 type TodoDropdownProps = {
-  todo: Todo;
+  todo: TodoCardItem;
 };
 
 const TodoDropdown = ({ todo }: TodoDropdownProps) => {
@@ -66,7 +66,7 @@ const TodoDropdown = ({ todo }: TodoDropdownProps) => {
           <DropdownMenuSeparator />
           {/* <DropdownMenuItem>Edit todo</DropdownMenuItem> */}
           <DropdownMenuItem
-            className='items-center gap-2 text-red-500 hover:text-red-600'
+            className='items-center gap-2 rounded-md text-destructive focus:bg-destructive focus:text-destructive-foreground'
             onClick={open}
           >
             <Trash className='h-4 w-4' /> Delete
