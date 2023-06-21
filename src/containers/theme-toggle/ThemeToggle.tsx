@@ -19,12 +19,12 @@ const ThemeToggle = ({ mode = 'toggle' }: { mode: 'switch' | 'toggle' }) => {
           Dark Mode
         </label>
         <Switch.Root
-          className='relative h-[25px] w-[42px] cursor-default rounded-full bg-primary outline-none focus:shadow-black data-[state=checked]:bg-slate-500'
+          className='relative h-[25px] w-[42px] cursor-default rounded-full bg-primary outline-none focus:shadow-black data-[state=checked]:bg-white'
           id='theme-mode'
           defaultChecked={isDark}
           onCheckedChange={() => setTheme(isDark ? 'light' : 'dark')}
         >
-          <Switch.Thumb className='block h-[21px] w-[21px] translate-x-0.5 rounded-full bg-white transition-transform duration-100 will-change-transform data-[state=checked]:translate-x-[19px]' />
+          <Switch.Thumb className='block h-[21px] w-[21px] translate-x-0.5 rounded-full bg-white transition-transform duration-100 will-change-transform data-[state=checked]:translate-x-[19px] dark:bg-black' />
         </Switch.Root>
       </div>
     );
