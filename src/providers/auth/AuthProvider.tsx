@@ -108,7 +108,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   if (authState === AUTH_STATE.INITIALIZING) {
     return (
-      <div className='grid h-screen w-screen place-items-center bg-bg-light text-2xl dark:bg-bg-dark'>
+      <div className='grid h-screen w-screen place-items-center text-2xl'>
         <div className='space-y-3'>
           <img src='/logo.svg' alt='logo' className='h-10 w-10' />
           <LoadingSpinner className='h-5 w-5' />
