@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
+import { Github } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/base';
@@ -10,6 +11,7 @@ import { updateUser } from '@/domains/profile/api-endpoints';
 import { useAuthContext } from '@/providers/auth/AuthProvider';
 import type { ProfileFormType } from '@/types/auth';
 import { ProfileFormSchema } from '@/types/auth';
+import { env } from '@/utils/config';
 import { useToast } from '@/utils/useToast';
 
 import ConfigForm from './ConfigForm';
@@ -86,6 +88,18 @@ const Settings = () => {
         <div className='space-y-4'>
           <h4 className='font-medium'>Appearance</h4>
           <ThemeToggle mode='switch' />
+        </div>
+      </>
+      <>
+        <hr />
+        <div className='space-y-2'>
+          <h4 className='font-medium'>Support</h4>
+          <p className='text-sm text-muted-foreground'>
+            If you have any questions, drop an issue at{' '}
+            <a href={env.repositoryUrl} target='_blank' rel='noreferrer'>
+              <Github className='inline-block h-4 w-4' />
+            </a>
+          </p>
         </div>
       </>
     </div>
